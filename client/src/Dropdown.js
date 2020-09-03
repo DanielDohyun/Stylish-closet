@@ -135,7 +135,7 @@ export default function MultipleSelect() {
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
+        <InputLabel id="demo-mutiple-checkbox-label">Color</InputLabel>
         <Select
           labelId="demo-mutiple-checkbox-label"
           id="demo-mutiple-checkbox"
@@ -146,10 +146,10 @@ export default function MultipleSelect() {
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+          {color.map((color) => (
+            <MenuItem key={color} value={color}>
+              {/* <Checkbox checked={color.indexOf(color) > -1} /> */}
+              <ListItemText primary={color} />
             </MenuItem>
           ))}
         </Select>
