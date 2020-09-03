@@ -52,6 +52,39 @@ const names = [
   'Kelly Snyder',
 ];
 
+const items = [
+  'Accessories',
+  'Clothing',
+  'Shoes'
+]
+
+const parts = [
+  'Tops',
+  'Bottom',
+  'Coat',
+  'Shirts',
+  'Jeans',
+  'Jacket',
+  'Dresses',
+  'Skirts'
+]
+
+const style = [
+  'Casual',
+  'Formal',
+  'Sporty',
+  'Vacation Look'
+];
+
+const color = [
+  'White',
+  'Black',
+  'Navy',
+  'Blue',
+  'Mustard'
+];
+
+
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
