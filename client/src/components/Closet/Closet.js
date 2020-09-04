@@ -16,7 +16,6 @@ class Closet extends React.Component {
     this.state= {
       clothes: [],
       show: false,
-      showClothing: false
     };
   }
 
@@ -29,20 +28,6 @@ class Closet extends React.Component {
 	hideModal = e => {
 		this.setState({
 			show: !this.state.show,
-		});
-  };
-  
-  selectedClothing = () => {
-		this.setState({
-			showClothing: true
-    });
-    console.log(this.state.showClothing)
-    
-  };
-  
-  hideClothing = e => {
-		this.setState({
-			showClothing: !this.state.showClothing,
 		});
   };
   
@@ -90,14 +75,10 @@ class Closet extends React.Component {
         <button className="clothes__add" 	onClick={e => {
 								this.showModal();}}>Add Clothes
         </button>
+
         <Upload 
           show={this.state.show}
 					hideModal={this.hideModal} 
-        />
-
-        <ShowClothing 
-          showClothing={this.state.showClothing}
-					hideClothing={this.hideClothing} 
         />
        
       </div>
