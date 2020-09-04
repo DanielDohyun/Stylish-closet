@@ -41,6 +41,6 @@ const projectStorage = firebase.storage();
 const projectFirestore = firebase.firestore();
 
 export { projectFirestore, projectStorage };
-// export default firebase;
+export default firebase;
 
 

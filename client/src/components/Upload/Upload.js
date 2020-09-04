@@ -6,17 +6,19 @@ import firebase from '../../firebase';
 class Upload extends Component {
   constructor (props) {
     super (props);
+    this.ref=firebase.firestore().collection('closet');
     this.state={
       image: null,
       style: '',
       color: '',
-      url: ''
+      url: '',
+      name: ''
     }
   }
 
   onChange = (e) => {
     const state = this.state
-    state[e.target.style] = e.target.value;
+    state[e.target.name] = e.target.value;
     this.setState(state);
   }
 
@@ -33,26 +35,45 @@ class Upload extends Component {
   handleUpload = e => {
     e.preventDefault();
     const {image} = this.state;
-    const uploadTask = firebase.storage().ref(`closet/${image.id}`).put(this.state.image)
-    uploadTask.on('state changed', (snapshot) =>{console.log(snapshot)},
+    const uploadTask = firebase.storage().ref(`images/${image.name}`).put(this.state.image)
+    uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
     (err) => {console.log(err);},
-    () => {firebase.storage().ref('closet').child(image.id).getDownloadURL().then(url => {
-      console.log(url);
+    () => {firebase.storage().ref('images').child(image.name).getDownloadURL().then(url => {
+      this.setState({url});
     })})
 
   }
 
-
+  onSubmit = (e) => {
+    e.preventDefault();
+    const {name, style, color} = this.state;
+    this.ref.add({
+      name,
+      style,
+      color,
+      url:this.state.url
+    }).then((docRef) => {
+      this.setState({
+        name: '',
+        style: '',
+        url: '' 
+      });
+      console.log(this.props)
+      // this.props.history.push("/")
+    })
+    .catch(error => {console.error("error adding document", error);
+    })
+  }
 
   render() {
     return (
       <>
         <form>
           {/* <input value={input} onChange={event => setInput(event.target.value)} /> */}
-          <label for="color">Color</label> 
+          <label htmlFor="color">Color</label> 
           <input type="text" className="form-color" name="color" onChange={this.onChange}/>
           
-          <label for="style">style</label>
+          <label htmlFor="style">style</label>
           <input type="text" className="form-style" name="style" onChange={this.onChange}/>
 
           <input className="upload-img" type="file" onChange={this.handleChange} />

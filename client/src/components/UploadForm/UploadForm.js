@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 const UploadForm = () => {
 //file is null to begins with
@@ -27,6 +28,7 @@ const UploadForm = () => {
       <div className="output">
         { error && <div className="error"> {error} </div> }
         { file && <div>{file.name}</div> }
+        { file && <ProgressBar file={file} setFile={setFile} /> }
       </div>
     </form>
   )
