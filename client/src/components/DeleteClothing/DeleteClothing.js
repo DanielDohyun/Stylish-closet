@@ -7,6 +7,12 @@ import firebase from '../../firebase';
 class DeleteClothing extends Component {
   constructor(props) {
     super(props);
+    this.state= {
+      key: '',
+      name: '',
+      color: '',
+      style: ''
+    }
   }
 
   render() {
