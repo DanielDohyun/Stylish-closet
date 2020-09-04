@@ -35,18 +35,6 @@ class Upload extends Component {
     console.log(e.target.files[0]);
   }
 
-  handleUpload = e => {
-    e.preventDefault();
-    // const {image} = this.state;
-    // const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
-    // uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
-    // (err) => {console.log(err);},
-    // () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
-    //   this.setState({url});
-    // })})
-
-  }
-
   onSubmit = (e) => {
     e.preventDefault();
 

@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 import Firebase from 'firebase';
 import firebase from '../../firebase';
+import backArrow from '../../assets/icons/back_arrow.svg';
 
 class ShowClothing extends Component {
   constructor(props){
@@ -62,6 +63,10 @@ class ShowClothing extends Component {
     return (
 
       <div>
+        <Link to='/'>
+        <img src={backArrow}/>
+        </Link>
+          
           <div className="current__img">
             <img src={this.state.clothing.url} className="upload-img" />
           </div>
