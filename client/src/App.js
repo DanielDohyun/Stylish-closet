@@ -52,8 +52,10 @@ class App extends React.Component {
   }
 
   onCollectionUpdate = (querySnapshot) => {
+    console.log('querySnapshot', querySnapshot)
     const clothes = [];
     querySnapshot.forEach((doc) => {
+      console.log('doc data', doc.data())
       const {style, color, url} = doc.data();
       clothes.push({
         key: doc.id,
@@ -66,20 +68,24 @@ class App extends React.Component {
     this.setState({
       clothes
     });
+    {console.log(clothes);}
+
   }
 
   render () {
-    console.log(this.state.clothes);
+    // console.log(this.state.clothes);
     return (
       <div className="App">
         {/* <h1>hello</h1> */}
         {/* <Practice /> */}
         {/* <Dropdown /> */}
-        {
+        {/* this.state.clothes.url && */}
+        { 
           this.state.clothes.map(clothes => (
             <>
               <h1>{clothes.style}</h1>
               <h1>{clothes.color}</h1>
+              <img src={clothes.url} />
             </>
           ))
         }

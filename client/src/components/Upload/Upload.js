@@ -34,18 +34,29 @@ class Upload extends Component {
 
   handleUpload = e => {
     e.preventDefault();
-    const {image} = this.state;
-    const uploadTask = firebase.storage().ref(`images/${image.name}`).put(this.state.image)
-    uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
-    (err) => {console.log(err);},
-    () => {firebase.storage().ref('images').child(image.name).getDownloadURL().then(url => {
-      this.setState({url});
-    })})
+    // const {image} = this.state;
+    // const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
+    // uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
+    // (err) => {console.log(err);},
+    // () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
+    //   this.setState({url});
+    // })})
 
   }
 
   onSubmit = (e) => {
     e.preventDefault();
+    const {image} = this.state;
+    const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
+    uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
+    (err) => {console.log(err);},
+
+    //target storage, and folder to get url => setState url
+    () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
+      this.setState({url});
+      console.log(url)
+    })})
+    
     const {name, style, color} = this.state;
     this.ref.add({
       name,
@@ -58,7 +69,8 @@ class Upload extends Component {
         style: '',
         url: '' 
       });
-      console.log(this.props)
+      // console.log(this.props)
+      // console.log(this.state.url)
       // this.props.history.push("/")
     })
     .catch(error => {console.error("error adding document", error);
@@ -66,6 +78,8 @@ class Upload extends Component {
   }
 
   render() {
+    const {name, style, color} = this.state;
+     
     return (
       <>
         <form>
