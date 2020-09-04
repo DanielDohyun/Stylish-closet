@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 import Firebase from 'firebase';
 import firebase from '../../firebase';
+import Modal from 'react-bootstrap4-modal';
+
+// import './Upload.scss';
 
 class Upload extends Component {
   constructor (props) {
@@ -77,36 +80,54 @@ class Upload extends Component {
       .catch(error => {console.error("error adding document", error);
       })
     })})
+
+    this.props.hideModal();
   }
 
   render() {
-    const {name, style, color} = this.state;
+    const {name, style, color,} = this.state;
+    const {show, hideModal} = this.props;
+    if (!show) {
+			return null;
+		}
      
     return (
       <>
-        <form>
-          {/* <input value={input} onChange={event => setInput(event.target.value)} /> */}
-          <label htmlFor="color">Color</label> 
-          <input type="text" className="form-color" name="color" onChange={this.onChange}/>
-          
-          <label htmlFor="style">style</label>
-          <input type="text" className="form-style" name="style" onChange={this.onChange}/>
 
-          <input className="upload-img" type="file" onChange={this.handleChange} />
-          <img src={this.state.url} />
+				<div className="upload__overlay"></div>
+        <form className="upload">
           
-          {/* <select className="upload-select" multiple title="Choose one of the following...">
-            <option>White</option>
-            <option>Black</option>
-            <option>Blue</option>
-            <option>Navy</option>
-            <option>Red</option>
-            <option>Yellow</option>
-          </select> */}
-          <button className="upload-cancel">Cancel</button>
+          <label htmlFor="color" className="form-colorLabel">Color</label> 
+          <select className="upload-select" multiple name="color" onChange={this.onChange}>
+            <option value="N/A">Color</option>
+            <option value="White">White</option>
+            <option value="Brown">Brown</option>
+            <option value="Black">Black</option>
+            <option value="Blue">Blue</option>
+            <option value="Navy">Navy</option>
+            <option value="Red">Red</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Pink">Pink</option>
+            <option value="Gray">Gray</option>
+          </select>
 
-          <button className="upload-submit-img" onClick={this.handleUpload} >Upload Image First</button>
-          <button className="upload-submit" onClick={this.onSubmit} >Submit</button>
+          <label htmlFor="style" className="form-styleLabel">style</label>
+          <select className="upload-select" multiple name="style" onChange={this.onChange}>
+            <option value="N/A">Style</option>
+            <option value="Casual">Casual</option>
+            <option value="Sporty">Sporty</option>
+            <option value="Formal">Formal</option>
+            <option value="Vintage">Vintage</option>
+            <option value="Vacation Look">Vacation Look</option>
+          </select>  
+
+          <input className="upload-imgInput" type="file" onChange={this.handleChange} />
+          <img src={this.state.url} className="upload-img" />
+
+          <div className="upload__btn">
+            <button className="upload-cancel" onClick={hideModal}>Cancel</button>
+            <button className="upload-submit" onClick={this.onSubmit} >Submit</button>
+          </div>
 
         </form>
       </>
