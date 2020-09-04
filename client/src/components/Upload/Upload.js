@@ -46,6 +46,7 @@ class Upload extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+
     const {image} = this.state;
     const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
     uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
@@ -54,27 +55,28 @@ class Upload extends Component {
     //target storage, and folder to get url => setState url
     () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
       this.setState({url});
-      console.log(url)
+      // console.log(url);
+
+      //chain this so that this runs after url value is passed
+      const {name, style, color} = this.state;
+      this.ref.add({
+        name,
+        style,
+        color,
+        url:this.state.url
+      }).then((docRef) => {
+        this.setState({
+          name: '',
+          style: '',
+          url: '' 
+        });
+        // console.log(this.props)
+        // console.log(this.state.url)
+        // this.props.history.push("/")
+      })
+      .catch(error => {console.error("error adding document", error);
+      })
     })})
-    
-    const {name, style, color} = this.state;
-    this.ref.add({
-      name,
-      style,
-      color,
-      url:this.state.url
-    }).then((docRef) => {
-      this.setState({
-        name: '',
-        style: '',
-        url: '' 
-      });
-      // console.log(this.props)
-      // console.log(this.state.url)
-      // this.props.history.push("/")
-    })
-    .catch(error => {console.error("error adding document", error);
-    })
   }
 
   render() {
