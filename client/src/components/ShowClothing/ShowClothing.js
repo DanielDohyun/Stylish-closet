@@ -15,8 +15,6 @@ class ShowClothing extends Component {
     }
   }
 
-   // const {ShowClothing, hideClothing} = this.props;
-   
   componentDidMount () {
   
     const ref = firebase.firestore().collection('closet').doc(this.props.match.params.id);

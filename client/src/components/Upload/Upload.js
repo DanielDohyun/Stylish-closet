@@ -15,7 +15,7 @@ class Upload extends Component {
       style: '',
       color: '',
       url: '',
-      name: ''
+      name: '',
     }
   }
 
@@ -61,9 +61,6 @@ class Upload extends Component {
           style: '',
           url: '' 
         });
-        // console.log(this.props)
-        // console.log(this.state.url)
-        // this.props.history.push("/")
       })
       .catch(error => {console.error("error adding document", error);
       })

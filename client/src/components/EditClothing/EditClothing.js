@@ -88,13 +88,13 @@ class EditClothing extends Component {
     e.preventDefault();
 
       //chain this so that this runs after url value is passed
-      const {name, style, color} = this.state;
+      const {name, style, color, url} = this.state;
       const updateRef = firebase.firestore().collection('closet').doc(this.state.key);
       updateRef.set({
         name,
         style,
         color,
-        url: this.state.url
+        url
       }).then((docRef) => {
         this.setState({
           key: '',
@@ -146,14 +146,14 @@ class EditClothing extends Component {
             </select>  
 
             <input className="edit__imgInput" type="file" onChange={this.handleChange} />
-            <button className="edit__first" onClick={this.handleUpload}>Upload image first</button>
+            <button className="edit__first" onClick={this.handleUpload}>To Update Photo</button>
             <img src={this.state.url} className="edit__img" />
 
             <div className="upload__btn">
               <Link to={`/show/${id}`}>
                 <button className="edit__cancel">Cancel</button>
               </Link>
-              <button className="edit__update" onClick={this.onSubmit} >Update</button>
+              <button className="edit__update" onClick={this.onSubmit} >Save All</button>
             </div>
 
           </form>
