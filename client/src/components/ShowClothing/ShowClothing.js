@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react'
 import { Link, Redirect } from "react-router-dom";
-import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
+// import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 import Firebase from 'firebase';
 import firebase from '../../firebase';
 import backArrow from '../../assets/icons/back_arrow.svg';

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
+// import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 import Firebase from 'firebase';
 import firebase from '../../firebase';
 import Modal from 'react-bootstrap4-modal';
 
-// import './Upload.scss';
+import './Upload.scss';
 
 class Upload extends Component {
-  constructor (props) {
-    super (props);
-    this.ref=firebase.firestore().collection('closet');
-    this.state={
+  constructor(props) {
+    super(props);
+    this.ref = firebase.firestore().collection('closet');
+    this.state = {
       image: null,
       style: '',
       color: '',
@@ -27,7 +27,7 @@ class Upload extends Component {
   }
 
   handleChange = (e) => {
-    if(e.target.files[0]) {
+    if (e.target.files[0]) {
       this.setState({
         image:e.target.files[0],
         check: 1
@@ -178,5 +178,4 @@ class Upload extends Component {
     )
   }
 }
-
-export default Upload;
+  export default Upload;
