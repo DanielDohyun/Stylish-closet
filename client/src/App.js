@@ -10,6 +10,7 @@ import firebase from './firebase';
 import Closet from './components/Closet/Closet';
 import Upload from './components/Upload/Upload';
 import ShowClothing from './components/ShowClothing/ShowClothing';
+import EditClothing from './components/EditClothing/EditClothing';
 
 class App extends React.Component {
 
@@ -28,6 +29,13 @@ class App extends React.Component {
               path="/show/:id"
               component={ShowClothing}
             />
+
+            <Route
+              exact
+              path="/edit/:id"
+              component={EditClothing}
+            />
+
           </Switch>
         </div>
       </section>

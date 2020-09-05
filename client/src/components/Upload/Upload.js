@@ -82,11 +82,11 @@ class Upload extends Component {
     return (
       <>
 
-				<div className="upload__overlay"></div>
+				<div className="upload-overlay"></div>
         <form className="upload">
           
-          <label htmlFor="color" className="form-colorLabel">Color</label> 
-          <select className="upload-select" multiple name="color" onChange={this.onChange}>
+          <label htmlFor="color" className="upload__colorLabel">Color</label> 
+          <select className="upload__select" multiple name="color" onChange={this.onChange}>
             <option value="N/A">Color</option>
             <option value="White">White</option>
             <option value="Brown">Brown</option>
@@ -99,8 +99,8 @@ class Upload extends Component {
             <option value="Gray">Gray</option>
           </select>
 
-          <label htmlFor="style" className="form-styleLabel">style</label>
-          <select className="upload-select" multiple name="style" onChange={this.onChange}>
+          <label htmlFor="style" className="upload__styleLabel">style</label>
+          <select className="upload__select" multiple name="style" onChange={this.onChange}>
             <option value="N/A">Style</option>
             <option value="Casual">Casual</option>
             <option value="Sporty">Sporty</option>
@@ -109,12 +109,12 @@ class Upload extends Component {
             <option value="Vacation Look">Vacation Look</option>
           </select>  
 
-          <input className="upload-imgInput" type="file" onChange={this.handleChange} />
-          <img src={this.state.url} className="upload-img" />
+          <input className="upload__imgInput" type="file" onChange={this.handleChange} />
+          <img src={this.state.url} className="upload__img" />
 
           <div className="upload__btn">
-            <button className="upload-cancel" onClick={hideModal}>Cancel</button>
-            <button className="upload-submit" onClick={this.onSubmit} >Submit</button>
+            <button className="upload__cancel" onClick={hideModal}>Cancel</button>
+            <button className="upload__submit" onClick={this.onSubmit} >Submit</button>
           </div>
 
         </form>

@@ -77,7 +77,7 @@ class ShowClothing extends Component {
           </div>
 
           <div className="current__btn">
-            <Link to={`/clothing/edit/${this.state.key}`}>
+            <Link to={`/edit/${this.state.key}`}>
               <button className="current__edit">Edit</button>
             </Link>
             {/* passing key as an id */}
