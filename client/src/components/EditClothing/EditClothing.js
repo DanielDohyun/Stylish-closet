@@ -86,7 +86,7 @@ class EditClothing extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
+    
       //chain this so that this runs after url value is passed
       const {name, style, color, url} = this.state;
       const updateRef = firebase.firestore().collection('closet').doc(this.state.key);
@@ -100,7 +100,7 @@ class EditClothing extends Component {
           key: '',
           style: '',
           name: '',
-          style: '',
+          color: '',
           url: '' 
         });
         // console.log(this.props)
@@ -146,7 +146,7 @@ class EditClothing extends Component {
             </select>  
 
             <input className="edit__imgInput" type="file" onChange={this.handleChange} />
-            <button className="edit__first" onClick={this.handleUpload}>To Update Photo</button>
+            <button className="edit__first" onClick={this.handleUpload}>Update Photo</button>
             <img src={this.state.url} className="edit__img" />
 
             <div className="upload__btn">

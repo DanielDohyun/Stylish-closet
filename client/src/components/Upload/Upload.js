@@ -16,6 +16,7 @@ class Upload extends Component {
       color: '',
       url: '',
       name: '',
+      check: 0
     }
   }
 
@@ -28,17 +29,70 @@ class Upload extends Component {
   handleChange = (e) => {
     if(e.target.files[0]) {
       this.setState({
-        image:e.target.files[0]
-
+        image:e.target.files[0],
+        check: 1
       })
     }
     console.log(e.target.files[0]);
   }
 
+  // handleUpload = (e) => {
+    
+  //   e.preventDefault();
+
+  //   this.setState({
+  //     check: 1
+  //   });
+
+  //   const {image} = this.state;
+  //   const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
+  //   uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
+  //   (err) => {console.log(err);},
+
+  //   //target storage, and folder to get url => setState url
+  //   () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
+  //     this.setState({url});
+  //     // console.log(url);
+  //   })})
+  // }
+
+  // onSubmit = (e) => {
+  //   if(this.state.check === 1) {
+  //     e.preventDefault();
+  //     //chain this so that this runs after url value is passed
+  //     const {name, style, color, url} = this.state;
+  //     this.ref.add({
+  //       name,
+  //       style,
+  //       color,
+  //       url: this.state.url
+  //     }).then((docRef) => {
+  //       this.setState({
+  //         key: '',
+  //         style: '',
+  //         name: '',
+  //         color: '',
+  //         url: '' 
+  //       });
+  //     })
+  //     .catch(error => {console.error("error editing the document", error);
+  //     })
+  //     this.setState({
+  //       check:0
+  //     });
+  //     this.props.hideModal();
+  //   } else {
+  //     e.preventDefault();
+  //     alert('Please upload your image first');
+  //   }
+    
+  // }
+
   onSubmit = (e) => {
     e.preventDefault();
 
-    const {image} = this.state;
+    if(this.state.check === 1) {
+      const {image} = this.state;
     const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
     uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
     (err) => {console.log(err);},
@@ -65,8 +119,12 @@ class Upload extends Component {
       .catch(error => {console.error("error adding document", error);
       })
     })})
-
+    this.setState({check:0});
     this.props.hideModal();
+    } else {
+      e.preventDefault();
+          alert('Please select an image first');
+    }
   }
 
   render() {
@@ -107,6 +165,7 @@ class Upload extends Component {
           </select>  
 
           <input className="upload__imgInput" type="file" onChange={this.handleChange} />
+          {/* <button className="upload__first" onClick={this.handleUpload}>Upload Photo</button> */}
           <img src={this.state.url} className="upload__img" />
 
           <div className="upload__btn">
