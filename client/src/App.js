@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Login from "./components/Login/Login";
 
 import 'bootstrap/dist/css/bootstrap.css';
 // import './App.css';
@@ -8,7 +9,6 @@ import db from './firebase';
 import Firebase from 'firebase';
 import firebase from './firebase';
 import Closet from './components/Closet/Closet';
-import Upload from './components/Upload/Upload';
 import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
 
