@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 // import './App.css';
 import db from './firebase';
 import Firebase from 'firebase';
@@ -32,7 +32,7 @@ class App extends React.Component {
         </div>
       </section>
       <footer>
-        <p className="copyright">Style Inc. All Rights Reserved.</p>
+        {/* <p className="copyright">Style Inc. All Rights Reserved.</p> */}
       </footer>
     </BrowserRouter>
 
