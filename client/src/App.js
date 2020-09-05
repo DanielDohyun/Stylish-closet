@@ -13,6 +13,26 @@ import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {}
+    }
+  }
+
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) =>{
+      if(user) {
+        this.setState({user})
+      } else {
+        this.setState({user: null})
+      }
+    })
+  }
 
   render () {
     // console.log(this.state.clothes);
@@ -22,6 +42,8 @@ class App extends React.Component {
       <section className="main">
         <div className="main-content">
           <Switch>
+            {this.state.user ? (<Closet />) : <Login />}
+
             <Route exact path="/" component={Closet} />
 
             <Route
