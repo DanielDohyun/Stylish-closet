@@ -12,6 +12,7 @@ import firebase from './firebase';
 import Closet from './components/Closet/Closet';
 import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
+import Header from './components/Header/Header';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class App extends React.Component {
     // console.log(this.state.clothes);
     return (
       <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <section className="main">
         <div className="main-content">
           <Switch>
