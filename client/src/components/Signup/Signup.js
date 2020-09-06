@@ -17,17 +17,6 @@ class Signup extends Component {
     }
   }
 
-  // signup = (e) => {
-  //   e.preventDefault();
-  //   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-  //     alert('account successfully created!');
-  //     console.log(u);
-  //     this.setState({
-  //       redirect: true
-  //     });
-  //   }).catch(err=> console.log(err));
-  // }
-
   signup = (e) => {
     e.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
