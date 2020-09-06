@@ -1,0 +1,94 @@
+import React, { Component } from 'react';
+import firebase from '../../firebase';
+
+class Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.login = this.login.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.signup = this.signup.bind(this);
+    this.state= {
+      first: "",
+      last: "",
+      birth: "",
+      email: "",
+      password: ""
+    }
+  }
+
+  signup = (e) => {
+    e.preventDefault();
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
+      console.log(u)
+    }).catch(err=> console.log(err));
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+  render() {
+
+    return (
+
+      <div>
+          <form className="login">
+            <input 
+            className="login__first"
+            name="first"
+            type="text"
+            id="first"
+            placeholder="First Name"
+            onChange={this.handleChange}
+            value={this.first}
+            />
+
+            <input 
+            className="login__last"
+            name="last"
+            type="text"
+            id="last"
+            placeholder="Last Name"
+            onChange={this.handleChange}
+            value={this.last}
+            />
+
+            <input 
+            className="login__birth"
+            name="birth"
+            type="text"
+            id="birth"
+            placeholder="DD/MM/YYYY"
+            onChange={this.handleChange}
+            value={this.birth}
+            />
+            
+            <input 
+            className="login__email"
+            name="email"
+            type="email"
+            id="email"
+            placeholder="enter email address"
+            onChange={this.handleChange}
+            value={this.state.email}
+            />
+            <input 
+            className="login__password"
+            name="password"
+            type="password"
+            id="password"
+            placeholder="enter password"
+            onChange={this.handleChange}
+            value={this.state.password}
+            />
+
+            <button onClick={this.signup} className="login__signupBtn">Signup</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default Signup;

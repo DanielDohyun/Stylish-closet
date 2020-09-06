@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
-
-// import 'bootstrap/dist/css/bootstrap.css';
-// import './App.css';
-import db from './firebase';
-import Firebase from 'firebase';
+// import db from './firebase';
+// import Firebase from 'firebase';
 import firebase from './firebase';
 import Closet from './components/Closet/Closet';
 import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
 import Header from './components/Header/Header';
+import Signup from './components/Signup/Signup';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,6 +43,8 @@ class App extends React.Component {
         <div className="main-content">
           <Switch>
             {this.state.user ? (<Closet />) : <Login />}
+
+            <Route exact path="/signup" component={Signup} />
 
             <Route exact path="/" component={Closet} />
 

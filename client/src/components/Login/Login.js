@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import firebase from '../../firebase';
 
 class Login extends Component {
@@ -80,8 +81,9 @@ class Login extends Component {
     return (
 
       <div>
-        <form>
+        <form className="login">
           <input 
+          className="login__email"
           name="email"
           type="email"
           id="email"
@@ -90,6 +92,7 @@ class Login extends Component {
           value={this.state.email}
           />
           <input 
+          className="login__password"
           name="password"
           type="password"
           id="password"
@@ -98,9 +101,11 @@ class Login extends Component {
           value={this.state.password}
           />
 
-          <button onClick={this.login}>Login</button>
-          <button onClick={this.signup}>Signup</button>
-          <button type="button" onClick={this.onSubmit}>Login with Google</button>
+          <button onClick={this.login} className="login__loginBtn">Login</button>
+          <Link to="/signup" >
+            <button className="login__signupBtn">Signup</button>
+          </Link>
+          <button type="button" onClick={this.onSubmit} className="login__google">Login with Google</button>
 
         </form>
       </div>
