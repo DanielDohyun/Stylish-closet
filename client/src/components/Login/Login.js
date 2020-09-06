@@ -13,6 +13,7 @@ class Login extends Component {
     }
   }
 
+  //email signup
   login = (e) => {
     e.preventDefault();
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
@@ -32,6 +33,46 @@ class Login extends Component {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
       console.log(u)
     }).catch(err=> console.log(err));
+  }
+
+
+  //Google
+
+  onSubmit = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+     console.log(error)
+    });
+  }
+
+  GoogleLogout = () => {
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // console.log('User is singed in')
+        // console.log(user.displayName +'\n' + user.email)
+        this.setState({
+          email:user.email
+        })
+
+      } else {
+        console.log('No User is signed in')
+      }
+    });
   }
 
   render() {
@@ -59,6 +100,7 @@ class Login extends Component {
 
           <button onClick={this.login}>Login</button>
           <button onClick={this.signup}>Signup</button>
+          <button type="button" onClick={this.onSubmit}>Login with Google</button>
 
         </form>
       </div>
