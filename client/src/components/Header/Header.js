@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from "react-router-dom";
 import firebase from '../../firebase';
+import './Header.scss';
 
 class Header extends Component {
   constructor(props) {
@@ -38,28 +39,35 @@ class Header extends Component {
 
     return (
 
-      <div>
-        <NavLink
-        	exact
-					to="/"
-					className="nav__Closet"
-					activeClassName="selected"
-				>
-					Closet{" "}
-				</NavLink>
-				<NavLink
-					exact
-					to="/Recommendation"
-					className="nav__Recommendation"
-					activeClassName="selected"
-				>
-          Style of the day
-				</NavLink>
+      <div className="header">
+        {/*replace with logo or style it */}
+        <p>StyLish Inc</p>
 
         {
           this.state.user && 
-          <button className="nav__signout" onClick={this.GoogleLogout}>Signout</button>
+          <div className="header__nav">
+            <NavLink
+            exact
+            to="/"
+            className="header__Closet"
+            activeClassName="selected"
+            >
+              Closet{" "}
+            </NavLink>
+
+            <NavLink
+              exact
+              to="/Recommendation"
+              className="header__Recommendation"
+              activeClassName="selected"
+            >
+              Style of the day
+            </NavLink>
+
+            <button className="nav__signout" onClick={this.GoogleLogout}>Signout</button>
+          </div>
         }
+
       </div>
     )
   }

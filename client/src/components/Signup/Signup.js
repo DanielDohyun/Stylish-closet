@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
+import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.signup = this.signup.bind(this);
     this.state= {
@@ -12,15 +12,35 @@ class Signup extends Component {
       last: "",
       birth: "",
       email: "",
-      password: ""
+      password: "",
+      redirect: false
     }
   }
+
+  // signup = (e) => {
+  //   e.preventDefault();
+  //   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
+  //     alert('account successfully created!');
+  //     console.log(u);
+  //     this.setState({
+  //       redirect: true
+  //     });
+  //   }).catch(err=> console.log(err));
+  // }
 
   signup = (e) => {
     e.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-      console.log(u)
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+        }).catch(function(error) {
+          // An error happened.
+        });   
     }).catch(err=> console.log(err));
+    alert('account successfully created!');
+    this.setState({
+      redirect: true
+    });  
   }
 
   handleChange = (e) => {
@@ -29,8 +49,26 @@ class Signup extends Component {
     })
   }
 
-  render() {
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // console.log('User is singed in')
+        // console.log(user.displayName +'\n' + user.email)
+        this.setState({
+          email:user.email
+        })
 
+      } else {
+        console.log('No User is signed in')
+      }
+    });
+  }
+
+  render() {
+    if (this.state.redirect === true) {
+			return <Redirect to="/" />;
+    }
+    
     return (
 
       <div>

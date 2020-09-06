@@ -42,9 +42,9 @@ class App extends React.Component {
       <section className="main">
         <div className="main-content">
           <Switch>
-            {this.state.user ? (<Closet />) : <Login />}
+            <Route exact path="/Signup" component={Signup} />
 
-            <Route exact path="/signup" component={Signup} />
+            {this.state.user ? (<Closet />) : <Login />}
 
             <Route exact path="/" component={Closet} />
 

@@ -7,7 +7,7 @@ class Login extends Component {
     super(props);
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.signup = this.signup.bind(this);
+    // this.signup = this.signup.bind(this);
     this.state= {
       email: "",
       password: ""
@@ -29,12 +29,12 @@ class Login extends Component {
     })
   }
 
-  signup = (e) => {
-    e.preventDefault();
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-      console.log(u)
-    }).catch(err=> console.log(err));
-  }
+  // signup = (e) => {
+  //   e.preventDefault();
+  //   firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
+  //     console.log(u)
+  //   }).catch(err=> console.log(err));
+  // }
 
 
   //Google
@@ -65,7 +65,8 @@ class Login extends Component {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // console.log('User is singed in')
-        // console.log(user.displayName +'\n' + user.email)
+        console.log(user +'\n' + user.email)
+        console.log(this + this.setState)
         this.setState({
           email:user.email
         })
@@ -102,7 +103,7 @@ class Login extends Component {
           />
 
           <button onClick={this.login} className="login__loginBtn">Login</button>
-          <Link to="/signup" >
+          <Link to="/Signup" >
             <button className="login__signupBtn">Signup</button>
           </Link>
           <button type="button" onClick={this.onSubmit} className="login__google">Login with Google</button>
