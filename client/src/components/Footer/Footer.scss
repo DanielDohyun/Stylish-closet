@@ -5,7 +5,7 @@
 .footer {
   background-color: $footer-back;
   padding: 3rem 1rem;
-
+  color: $primary-color;
 
   @include tablet {
     padding: 3rem 1.5rem;
@@ -13,6 +13,7 @@
 
   @include desktop {
     padding: 3rem 4rem;
+    display: flex;
   }
 
   .sns {
@@ -21,11 +22,11 @@
     }
 
     &__heading {
-      font-size: 2.15rem;
+      font-size: 1.5rem;
 
       @include tablet {
-        font-size: 2.25rem;
-        margin: 0;
+        font-size: 1.8rem;
+        // margin: 0;
       }
     }
 
@@ -42,21 +43,8 @@
     &__icon {
       margin-right: 2rem;
       height: 20px;
-      color: black;
     }
 
-    &__logo {
-      display: none;
-
-      @include tablet {
-        display: flex;
-      }
-
-      @include desktop {
-        height: 2rem;
-        width: 7.5rem;
-      }
-    }
   }
   
   .contact {
@@ -64,6 +52,17 @@
       @include flex ($justify: space-between, $align: initial);
       // to make 3 columns in desktop mode
     }
+
+    &__heading {
+      font-size: 1.5rem;
+
+      @include tablet {
+        font-size: 1.8rem;
+        // margin: 0;
+      }
+    }
+
+
     &__name {
       font-size: 0.84rem;
       line-height: 1.25rem;
@@ -86,7 +85,6 @@
 
     // mailto styling
     &__email>a {
-      color: $white-color;
       text-decoration: none;
     }
 
