@@ -1,0 +1,120 @@
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+@import "../../styles/partials.scss";
+
+.footer {
+  background-color: $footer-back;
+  padding: 3rem 1rem;
+
+
+  @include tablet {
+    padding: 3rem 1.5rem;
+  }
+
+  @include desktop {
+    padding: 3rem 4rem;
+  }
+
+  .sns {
+    @include tablet {
+      @include flex ($justify: space-between, $align: baseline);
+    }
+
+    &__heading {
+      font-size: 2.15rem;
+
+      @include tablet {
+        font-size: 2.25rem;
+        margin: 0;
+      }
+    }
+
+    &__container {
+      @include tablet {
+        // margin-left: -6.5rem;
+      }  
+
+      @include desktop {
+        // margin-left: -28rem;
+      }
+    }
+
+    &__icon {
+      margin-right: 2rem;
+      height: 20px;
+      color: black;
+    }
+
+    &__logo {
+      display: none;
+
+      @include tablet {
+        display: flex;
+      }
+
+      @include desktop {
+        height: 2rem;
+        width: 7.5rem;
+      }
+    }
+  }
+  
+  .contact {
+    @include tablet {
+      @include flex ($justify: space-between, $align: initial);
+      // to make 3 columns in desktop mode
+    }
+    &__name {
+      font-size: 0.84rem;
+      line-height: 1.25rem;
+      font-weight: 600;
+
+      @include tablet {
+        font-size: 0.98rem;
+      }
+
+      @include desktop {
+        margin: 3.5rem 0 1.5rem 0;
+      }
+    }
+
+    &__location, &__email {
+
+      @include tablet {
+      }
+    }
+
+    // mailto styling
+    &__email>a {
+      color: $white-color;
+      text-decoration: none;
+    }
+
+    .third {
+      @include tablet {
+        margin-right: 0.3rem;
+      }
+
+      @include desktop {
+        margin-right: 20rem;
+      }
+    }
+    .second {
+      @include tablet {
+        margin-left: -1.5rem;
+      }
+    }
+  }
+ 
+  // font size, line height and margin for copyright section
+  .copyright {
+    margin-top: 1.615rem;
+
+    @include tablet {
+     }
+
+    @include desktop {
+      margin-top: 1.615rem;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
+import Footer from './components/Footer/Footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -63,9 +64,7 @@ class App extends React.Component {
           </Switch>
         </div>
       </section>
-      <footer>
-        {/* <p className="copyright">Style Inc. All Rights Reserved.</p> */}
-      </footer>
+      <Footer />
     </BrowserRouter>
 
     )
