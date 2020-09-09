@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 // import 'bootstrap/dist/css/bootstrap.css';
-import db from '../../firebase';
-import Firebase from 'firebase';
+// import db from '../../firebase';
+// import Firebase from 'firebase';
 import firebase from '../../firebase';
 import Upload from '../Upload/Upload';
 import ShowClothing from '../ShowClothing/ShowClothing';

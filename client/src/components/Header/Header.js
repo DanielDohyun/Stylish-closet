@@ -39,32 +39,31 @@ class Header extends Component {
 
     return (
 
-      <div className="header">
+      <div className="header nav navbar-default navbar-fixed-top">
         {/*replace with logo or style it */}
-        <p>StyLish Inc</p>
+        <p className="header__name">StyLish Inc</p>
 
         {
           this.state.user && 
-          <div className="header__nav">
-            <NavLink
-            exact
-            to="/"
-            className="header__Closet"
-            activeClassName="selected"
-            >
-              Closet{" "}
-            </NavLink>
-
-            <NavLink
+            <div className="header__link">
+              <NavLink
               exact
-              to="/Recommendation"
-              className="header__Recommendation"
+              to="/"
+              className="header__closet"
               activeClassName="selected"
-            >
-              Style of the day
-            </NavLink>
+              >
+                Closet{" "}
+              </NavLink>
 
-            <button className="nav__signout" onClick={this.GoogleLogout}>Signout</button>
+              <NavLink
+                exact
+                to="/Recommendation"
+                className="header__recommendation"
+                activeClassName="selected"
+              >
+                Style of the day
+              </NavLink>
+            <button className="header__out" onClick={this.GoogleLogout}>Signout</button>
           </div>
         }
 

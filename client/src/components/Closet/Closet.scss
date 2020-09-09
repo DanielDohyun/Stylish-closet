@@ -3,10 +3,12 @@
 @import "../../styles/partials.scss";
 
 .home-inner {
-    height: 100vh;
+    height: 90vh;
     position: relative;
     background-color: #fff;
     animation: opacity-background 1s 3s ease-in-out both;
+    // padding-top: 10vh;
+    width: 100%;
 }
 @keyframes opacity-background {
     0% {
@@ -87,8 +89,9 @@
     transform: translate(-50%, -50%);
     background: url('../../assets/images/closet.jpg') no-repeat center center;
     background-size: cover;
-    height: 600px;
-    width: 600px;
+    height: 90vw;
+    // width: 600px;
+    width: 100%;
     // display: none;
     display: flex;
     opacity: 0;
