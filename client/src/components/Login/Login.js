@@ -21,7 +21,7 @@ class Login extends Component {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
       console.log(u);
     }).catch(err => {
-      console.log(err)});
+      alert(err.message)});
   }
 
   handleChange = (e) => {
@@ -42,7 +42,7 @@ class Login extends Component {
       var user = result.user;
       // ...
     }).catch(function(error) {
-     console.log(error)
+     alert(error.message);
     });
   }
 
