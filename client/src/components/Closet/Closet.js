@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 
 import './Closet.scss'
 
+var user = firebase.auth().currentUser;
+console.log(user)
+// db.collection("closet").where("author", "==", user.uid).get();
+
 class Closet extends React.Component {
   constructor(props) {
     super(props);
@@ -62,45 +66,46 @@ class Closet extends React.Component {
   render() {
     // console.log(this.state.clothes);
     return (
-      // <div className="App">
-      //   { 
-      //     this.state.clothes.map(clothes => (
-      //         <div className="clothes__container">
-      //           <p>{clothes.style}</p>
-      //           <p>{clothes.color}</p>
-      //           <Link to={`/show/${clothes.key}`}>
-      //             <img src={clothes.url} className="clothes__img" />
-      //           </Link>
-      //         </div>
-      //     ))
-      //   }
-      //   <button className="clothes__add" 	onClick={e => {
-      // 					this.showModal();}}>Add Clothes
-      //   </button>
+      <div className="App">
+        <h2>hello</h2>
+        { 
+          this.state.clothes.map(clothes => (
+              <div className="clothes__container">
+                <p>{clothes.style}</p>
+                <p>{clothes.color}</p>
+                <Link to={`/show/${clothes.key}`}>
+                  <img src={clothes.url} className="clothes__img" />
+                </Link>
+              </div>
+          ))
+        }
+        <button className="clothes__add" 	onClick={e => {
+      					this.showModal();}}>Add Clothes
+        </button>
 
-      //   <Upload 
-      //     show={this.state.show}
-      // 		hideModal={this.hideModal} 
-      //   />
+        <Upload 
+          show={this.state.show}
+      		hideModal={this.hideModal} 
+        />
 
-      // </div>
-      <div className="home-inner">
-        <h3 className="welcome-text">Stylish Closet <br/><span>made by Daniel Kim <i className="fa fa-heart"></i></span></h3>
-        <div className="main">
-          <a className="div1" onClick={e => { }}></a>
-          <div className="div2"></div>
-          <div className="div3">
-            <a className="div3-1"></a>
-            <div className="div3-2"></div>
-          </div>
-          <div className="div4">
-            <a className="div4-1"></a>
-            <a className="div4-2"></a>
-          </div>
-          <div className="div5"></div>
-          <a className="div6"></a>
-        </div>
       </div>
+      // <div className="home-inner">
+      //   <h3 className="welcome-text">Stylish Closet <br/><span>made by Daniel Kim <i className="fa fa-heart"></i></span></h3>
+      //   <div className="main">
+      //     <a className="div1" onClick={e => { }}></a>
+      //     <div className="div2"></div>
+      //     <div className="div3">
+      //       <a className="div3-1"></a>
+      //       <div className="div3-2"></div>
+      //     </div>
+      //     <div className="div4">
+      //       <a className="div4-1"></a>
+      //       <a className="div4-2"></a>
+      //     </div>
+      //     <div className="div5"></div>
+      //     <a className="div6"></a>
+      //   </div>
+      // </div>
     )
   }
 }

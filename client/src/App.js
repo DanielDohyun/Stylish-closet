@@ -17,7 +17,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      user: null
     }
   }
 
@@ -27,6 +27,7 @@ class App extends React.Component {
 
   authListener() {
     firebase.auth().onAuthStateChanged((user) =>{
+      console.log(user)
       if(user) {
         this.setState({user})
       } else {
@@ -36,7 +37,7 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log(this.state.clothes);
+    console.log(this.state.user);
     return (
       <BrowserRouter>
       <Header />
@@ -45,7 +46,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/Signup" component={Signup} />
 
-            {this.state.user ? (<Closet />) : <Login />}
+            {this.state.user ? <Closet /> : <Login />}
 
             <Route exact path="/" component={Closet} />
 
