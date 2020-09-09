@@ -23,17 +23,15 @@ class Signup extends Component {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
       u.user.updateProfile({
         displayName: this.state.first
-      });
-      firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-        }).catch(function(error) {
-          // An error happened.
-        });   
-    }).catch(err=> console.log(err));
-    alert('account successfully created!');
-    this.setState({
-      redirect: true
-    });  
+      })
+      alert('account successfully created!')
+      firebase.auth().signOut().then(() => {
+          this.setState({
+            redirect: true
+          });
+          window.location.reload(true);
+        });
+    }).catch(err=> alert(err.message));
   }
 
   handleChange = (e) => {

@@ -29,7 +29,8 @@ class Header extends Component {
 
   GoogleLogout = () => {
     firebase.auth().signOut().then(function() {
-      Location.reload();
+    window.location.reload(true);
+
       // Sign-out successful.
     }).catch(function(error) {
       // An error happened.
