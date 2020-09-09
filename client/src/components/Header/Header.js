@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import firebase from '../../firebase';
 import './Header.scss';
 
@@ -29,6 +29,7 @@ class Header extends Component {
 
   GoogleLogout = () => {
     firebase.auth().signOut().then(function() {
+      Location.reload();
       // Sign-out successful.
     }).catch(function(error) {
       // An error happened.
