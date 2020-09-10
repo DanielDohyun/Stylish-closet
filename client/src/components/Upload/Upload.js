@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap4-modal';
 
 import './Upload.scss';
 
-var user = firebase.auth().currentUser;
+// var userCur = firebase.auth().currentUser;
 
 class Upload extends Component {
   constructor(props) {
@@ -72,6 +72,9 @@ class Upload extends Component {
 
       //chain this so that this runs after url value is passed
       const {name, style, color, user} = this.state;
+      var userCur= firebase.auth().currentUser;
+      // this.ref.where("author", "==", userCur.uid).set({
+      // this.ref.doc(userCur.uid).add({
       this.ref.add({
         uid: user.uid,
         name,

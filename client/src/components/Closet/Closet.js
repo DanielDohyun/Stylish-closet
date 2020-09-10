@@ -9,20 +9,25 @@ import ShowClothing from '../ShowClothing/ShowClothing';
 import { Link } from "react-router-dom";
 
 import './Closet.scss'
+import { auth } from 'firebase';
 
-var user = firebase.auth().currentUser;
-console.log(user)
+// console.log(user)
 // db.collection("closet").where("author", "==", user.uid).get();
+var userCur= firebase.auth().currentUser;
+console.log(userCur)
+
 
 class Closet extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('closet');
     this.unsubscribe = null;
     this.state = {
       clothes: [],
       show: false,
+      user: null
     };
+    // this.ref = firebase.firestore().collection('closet/' + this.state.user.id);
+
   }
 
   showModal = () => {
@@ -37,8 +42,29 @@ class Closet extends React.Component {
     });
   };
 
+   //need this to update the user and get uid
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) =>{
+      console.log(user.uid)
+      if(user) {
+        this.setState({user: user.uid});
+        this.getUserData(user.id);
+      } else {
+        this.setState({user: null})
+      }
+    })
+  }
+
+  getUserData= (uid) => {
+    firebase.firestore().collectionGroup('closet' + uid).onSnapshot(this.onCollectionUpdate)
+}
+
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    this.authListener();
+    console.log(this.state.user)
+    // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    // this.ref = firebase.firestore().collection('closet/' + this.state.user.id);
+    // this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
 
   }
 
