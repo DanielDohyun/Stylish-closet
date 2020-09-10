@@ -90,11 +90,23 @@ class Closet extends React.Component {
 
   render() {
     // console.log(this.state.clothes);
+    const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
     return (
       <div className="App">
         <h2>hello</h2>
-        { 
+        {/* { 
           this.state.clothes.map(clothes => (
+              <div className="clothes__container">
+                <p>{clothes.style}</p>
+                <p>{clothes.color}</p>
+                <Link to={`/show/${clothes.key}`}>
+                  <img src={clothes.url} className="clothes__img" />
+                </Link>
+              </div>
+          ))
+        } */}
+         { 
+          filtered.map(clothes => (
               <div className="clothes__container">
                 <p>{clothes.style}</p>
                 <p>{clothes.color}</p>

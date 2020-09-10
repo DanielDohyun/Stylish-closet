@@ -19,6 +19,7 @@ class Upload extends Component {
       color: '',
       url: '',
       name: '',
+      category: '',
       check: 0,
       user: null
     }
@@ -71,7 +72,7 @@ class Upload extends Component {
       // console.log(url);
 
       //chain this so that this runs after url value is passed
-      const {name, style, color, user} = this.state;
+      const {name, style, color, user, category} = this.state;
       var userCur= firebase.auth().currentUser;
       // this.ref.where("author", "==", userCur.uid).set({
       // this.ref.doc(userCur.uid).add({
@@ -80,12 +81,15 @@ class Upload extends Component {
         name,
         style,
         color,
-        url:this.state.url
+        url:this.state.url,
+        category
       }).then((docRef) => {
         this.setState({
           name: '',
           style: '',
-          url: '' 
+          url: '',
+          color: '',
+          category: '' 
         });
       })
       .catch(error => {console.error("error adding document", error);
@@ -111,9 +115,19 @@ class Upload extends Component {
 
 				<div className="upload-overlay"></div>
         <form className="upload">
+
+        <label htmlFor="category" className="upload__categoryLabel">Category</label> 
+          <select className="upload__select" single name="category" onChange={this.onChange}>
+            <option value="N/A">Category</option>
+            <option value="Top">Top</option>
+            <option value="Bottom">Bottom</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Accessory">Accessory</option>
+            <option value="Coats&Jackets">Coats & Jackets</option>
+          </select>
           
           <label htmlFor="color" className="upload__colorLabel">Color</label> 
-          <select className="upload__select" multiple name="color" onChange={this.onChange}>
+          <select className="upload__select" single name="color" onChange={this.onChange}>
             <option value="N/A">Color</option>
             <option value="White">White</option>
             <option value="Brown">Brown</option>
@@ -127,7 +141,7 @@ class Upload extends Component {
           </select>
 
           <label htmlFor="style" className="upload__styleLabel">style</label>
-          <select className="upload__select" multiple name="style" onChange={this.onChange}>
+          <select className="upload__select" single name="style" onChange={this.onChange}>
             <option value="N/A">Style</option>
             <option value="Casual">Casual</option>
             <option value="Sporty">Sporty</option>
