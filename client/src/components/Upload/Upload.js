@@ -76,7 +76,7 @@ class Upload extends Component {
       // this.ref.where("author", "==", userCur.uid).set({
       // this.ref.doc(userCur.uid).add({
       this.ref.add({
-        uid: user.uid,
+        author: user.uid,
         name,
         style,
         color,

@@ -46,10 +46,6 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/Signup" component={Signup} />
 
-            {this.state.user ? <Closet /> : <Login />}
-
-            <Route exact path="/" component={Closet} />
-
             <Route
               exact
               path="/show/:id"
@@ -61,6 +57,10 @@ class App extends React.Component {
               path="/edit/:id"
               component={EditClothing}
             />
+
+            {this.state.user ? <Closet /> : <Login />}
+
+            <Route exact path="/" component={Closet} />
 
           </Switch>
         </div>

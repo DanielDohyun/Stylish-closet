@@ -11,11 +11,8 @@ import { Link } from "react-router-dom";
 import './Closet.scss'
 import { auth } from 'firebase';
 
-// console.log(user)
-// db.collection("closet").where("author", "==", user.uid).get();
 var userCur= firebase.auth().currentUser;
 console.log(userCur)
-
 
 class Closet extends React.Component {
   constructor(props) {
@@ -48,7 +45,7 @@ class Closet extends React.Component {
       console.log(user.uid)
       if(user) {
         this.setState({user: user.uid});
-        this.getUserData(user.id);
+        this.getUserData(user.uid);
       } else {
         this.setState({user: null})
       }
@@ -56,7 +53,9 @@ class Closet extends React.Component {
   }
 
   getUserData= (uid) => {
-    firebase.firestore().collectionGroup('closet' + uid).onSnapshot(this.onCollectionUpdate)
+    // firebase.firestore().collectionGroup('closet' + uid).onSnapshot(this.onCollectionUpdate);
+    console.log(uid);
+    firebase.firestore().collection('closet').where("author", "==", uid).onSnapshot(this.onCollectionUpdate);
 }
 
   componentDidMount() {
@@ -85,7 +84,7 @@ class Closet extends React.Component {
     this.setState({
       clothes
     });
-    // {console.log(clothes);}
+    {console.log(clothes);}
 
   }
 

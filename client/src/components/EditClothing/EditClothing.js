@@ -3,6 +3,7 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import Firebase from 'firebase';
 import firebase from '../../firebase';
 import backArrow from '../../assets/icons/back_arrow.svg';
+import './EditClothing.scss';
 
 let color = [
   "White", "Brown", "Black", "Blue", "Navy", "Red", "Yellow", "Pink", "Gray"
@@ -117,11 +118,11 @@ class EditClothing extends Component {
 
     return (
 
-      <div className="Edit">
+      <div className="edit">
             <Link to='/'>
               <img src={backArrow}/>
             </Link>
-          <form className="Edit__form">
+          <form className="edit__form">
           
             <label htmlFor="color" className="edit__colorLabel">Color</label> 
             <select className="edit__select" multiple name="color" onChange={this.onChange}>
