@@ -11,7 +11,6 @@ class Header extends Component {
     }
   }
 
-
   //this authListener is to track login state => if user is logged in => show signout button
   componentDidMount() {
     this.authListener();
@@ -31,7 +30,6 @@ class Header extends Component {
     firebase.auth().signOut().then(function() {
     window.location.reload(true);
 
-      // Sign-out successful.
     }).catch(function(error) {
       // An error happened.
     });

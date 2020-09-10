@@ -119,11 +119,11 @@ class Upload extends Component {
         <label htmlFor="category" className="upload__categoryLabel">Category</label> 
           <select className="upload__select" single name="category" onChange={this.onChange}>
             <option value="N/A">Category</option>
+            <option value="Coats&Jackets">Coats & Jackets</option>
             <option value="Top">Top</option>
             <option value="Bottom">Bottom</option>
             <option value="Shoes">Shoes</option>
             <option value="Accessory">Accessory</option>
-            <option value="Coats&Jackets">Coats & Jackets</option>
           </select>
           
           <label htmlFor="color" className="upload__colorLabel">Color</label> 
