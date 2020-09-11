@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import firebase from '../../firebase';
-import { Link } from "react-router-dom";
+import Upload from '../Upload/Upload';
+import ShowClothing from '../ShowClothing/ShowClothing';
+import { useHistory, Link } from "react-router-dom";
 import './Closet.scss'
+import { auth } from 'firebase';
 
 var userCur= firebase.auth().currentUser;
 console.log(userCur)
@@ -10,6 +14,9 @@ class Closet extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      clothes: [],
+      show: false,
+      userUid: null,
       user: null
     };
   }
@@ -27,63 +34,42 @@ class Closet extends React.Component {
 
   componentDidMount() {
     this.authListener();
-    // console.log(this.state.user)
+    console.log(this.state.user)
+  }
+
+  goToCloset = () => {
+    this.props.history.push('/closet');
   }
 
   render() {
+    // console.log(this.state.clothes);
+    const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
+    console.log(this.state.user)
+    console.log(this.props)
     if(!this.state.user) {
       return null;
     }
     return (
-      // <div className="App">
-      //   <h2>hello</h2>
-      //   {/* { 
-      //     this.state.clothes.map(clothes => (
-      //         <div className="clothes__container">
-      //           <p>{clothes.style}</p>
-      //           <p>{clothes.color}</p>
-      //           <Link to={`/show/${clothes.key}`}>
-      //             <img src={clothes.url} className="clothes__img" />
-      //           </Link>
-      //         </div>
-      //     ))
-      //   } */}
-      //    { 
-      //     filtered.map(clothes => (
-      //         <div className="clothes__container">
-      //           <p>{clothes.style}</p>
-      //           <p>{clothes.color}</p>
-      //           <Link to={`/show/${clothes.key}`}>
-      //             <img src={clothes.url} className="clothes__img" />
-      //           </Link>
-      //         </div>
-      //     ))
-      //   }
-      //   <button className="clothes__add" 	onClick={e => {
-      // 					this.showModal();}}>Add Clothes
-      //   </button>
-
-      //   <Upload 
-      //     show={this.state.show}
-      // 		hideModal={this.hideModal} 
-      //   />
-
-      // </div>
+    
       <div className="home-inner">
         <h3 className="welcome-text">Stylish Closet <br/><span>Welcome {this.state.user.displayName} <i className="fa fa-heart"></i></span></h3>
         <div className="main">
-          <a className="closet__shoes" onClick={e => { }}></a>
+        
+        <Link to="/shoes" className="div1">
+          <div className="div1 closet__shoes"> </div>
+        </Link>
           <div className="div2"></div>
-          <div className="closet__coats">
-            <a className="div3-1"></a>
-            <div className="div3-2"></div>
+            <div className="div3 ">
+              <div className="div3-1"></div>
+              <div className="div3-2"></div>
+            </div>
+          <div className="div4 closet__coats">
+            <div className="div4-1 closet__top"></div>
+            <div className="div4-2 closet__bottom"></div>
           </div>
-          <div className="div4">
-            <a className="closet__top"></a>
-            <a className="closet__bottom"></a>
-          </div>
+
           <div className="div5"></div>
-          <a className="div6"></a>
+          <div className="div6 closet__accessory"></div>
         </div>
       </div>
     )

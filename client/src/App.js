@@ -12,6 +12,8 @@ import EditClothing from './components/EditClothing/EditClothing';
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
 import Footer from './components/Footer/Footer';
+import Coats from './components/Coats/Coats';
+import Shoes from './components/Shoes/Shoes';
 
 class App extends React.Component {
   constructor(props) {
@@ -58,9 +60,24 @@ class App extends React.Component {
               component={EditClothing}
             />
 
+            <Route
+              exact
+              path="/coats"
+              component={Coats}
+            />
+            
+            <Route
+              exact
+              path="/shoes"
+              component={Shoes}
+            />
+       
+
             {this.state.user ? <Closet /> : <Login />}
 
             <Route exact path="/" component={Closet} />
+
+         
 
           </Switch>
         </div>

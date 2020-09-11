@@ -1,4 +1,4 @@
-@import "../../styles/fonts";
+// @import "../../styles/fonts";
 @import "../../styles/mixins";
 @import "../../styles/partials.scss";
 
@@ -9,6 +9,7 @@
     animation: opacity-background 1s 3s ease-in-out both;
     // padding-top: 10vh;
     width: 100%;
+    margin-top: 6rem;
 }
 @keyframes opacity-background {
     0% {
@@ -107,93 +108,100 @@
     }
 }
 
-.home-inner .main .div1 {
+.link1 {
+    flex: 0.16;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+}
+
+.div1 {
     /* border: 1px solid #000; */
     flex: 0.16;
 }
 
-.home-inner .main .div1:hover {
+.div1:hover {
     box-shadow: 2px 2px 18px #444;
     transition: all 0.3s;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.home-inner .main .div1 a {
+.div1 div {
     height: 100%;
     width: 100%;
 }
 
-.home-inner .main .div2 {
+.div2 {
     flex: 0.09;
     /* border: 1px solid blue; */
 }
 
-.home-inner .main .div3 {
+.div3 {
     flex: 0.21;
     /* border: 1px solid yellow; */
 }
 
-.home-inner .main .div3 .div3-1 {
+.div3-1 {
     display: block;
     height: 55%;
     /* border: 1px solid royalblue; */
 }
 
-.home-inner .main .div3 .div3-1:hover {
+.div3-1:hover {
     box-shadow: 2px 2px 18px rgb(34, 34, 34);
     transition: all 0.3s;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.home-inner .main .div3 .div3-2 {
+.div3-2 {
     height: 45%;
     /* border: 1px solid #000; */
 }
 
-.home-inner .main .div4 {
+.div4 {
     flex: 0.28;
     /* border: 1px solid red; */
 }
 
-.home-inner .main .div4 .div4-1 {
+.div4-1 {
     height: 54%;
     display: block;
     /* border: 1px solid #000; */
 }
-.home-inner .main .div4 .div4-1:hover {
+.div4-1:hover {
     box-shadow: 10px 10px 18px rgb(31, 31, 31);
     transition: all 0.3s;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.home-inner .main .div4 .div4-2 {
+.div4-2 {
     height: 26%;
     display: block;
     /* border: 1px solid #000; */
 }
 
-.home-inner .main .div4 .div4-2:hover {
+.div4-2:hover {
     box-shadow: 2px 2px 18px #444;
     transition: all 0.3s;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.home-inner .main .div5 {
+.div5 {
     flex: 0.1;
     /* border: 1px solid green; */
 }
 
-.home-inner .main .div6 {
+.div6 {
     flex: 0.16;
     display: block;
     /* border: 1px solid purple; */
 }
 
-.home-inner .main .div6:hover {
+.div6:hover {
     box-shadow: 2px 2px 18px rgb(32, 32, 32);
     transition: all 0.3s;
     border-radius: 10px;
