@@ -77,7 +77,7 @@ class Top extends React.Component {
   }
 
   render() {
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Shoes"); 
+    const filtered = this.state.clothes.filter(clothes => clothes.category == "Top"); 
     return (
       <div className="App">
         <h2>hello</h2>

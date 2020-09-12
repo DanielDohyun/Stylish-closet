@@ -52,7 +52,7 @@ class Closet extends React.Component {
     return (
     
       <div className="home-inner">
-        <h3 className="welcome-text">Stylish Closet <br/><span>Welcome {this.state.user.displayName} <i className="fa fa-heart"></i></span></h3>
+        <h3 className="welcome-text">Stylish Closet <br/><span>Welcome {this.state.user.displayName}</span></h3>
         <div className="main">
         
         <Link to="/shoes" className="div1">

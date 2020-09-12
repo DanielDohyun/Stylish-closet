@@ -77,12 +77,10 @@ class All extends React.Component {
   }
 
   render() {
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Shoes"); 
     return (
       <div className="App">
-        <h2>hello</h2>
          { 
-          filtered.map(clothes => (
+          this.state.clothes.map(clothes => (
               <div className="clothes__container">
                 <p>{clothes.style}</p>
                 <p>{clothes.color}</p>

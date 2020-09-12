@@ -75,10 +75,9 @@ class Coats extends React.Component {
   }
 
   render() {
-    const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
+    const filtered = this.state.clothes.filter(clothes => clothes.category == "Coats&Jackets"); 
     return (
       <div className="App">
-        <h2>hello</h2>
          { 
           filtered.map(clothes => (
               <div className="clothes__container">
