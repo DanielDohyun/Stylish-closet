@@ -3,20 +3,25 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
-// import db from './firebase';
-// import Firebase from 'firebase';
 import firebase from './firebase';
 import Closet from './components/Closet/Closet';
 import ShowClothing from './components/ShowClothing/ShowClothing';
 import EditClothing from './components/EditClothing/EditClothing';
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
+import Footer from './components/Footer/Footer';
+import Coats from './components/Coats/Coats';
+import Shoes from './components/Shoes/Shoes';
+import Top from './components/Top/Top';
+import Bottom from './components/Bottom/Bottom';
+import All from './components/All/All';
+import Accessory from './components/Accessory/Accessory';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      user: null
     }
   }
 
@@ -26,6 +31,7 @@ class App extends React.Component {
 
   authListener() {
     firebase.auth().onAuthStateChanged((user) =>{
+      console.log(user.uid)
       if(user) {
         this.setState({user})
       } else {
@@ -35,7 +41,7 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log(this.state.clothes);
+    console.log(this.state.user);
     return (
       <BrowserRouter>
       <Header />
@@ -43,10 +49,6 @@ class App extends React.Component {
         <div className="main-content">
           <Switch>
             <Route exact path="/Signup" component={Signup} />
-
-            {this.state.user ? (<Closet />) : <Login />}
-
-            <Route exact path="/" component={Closet} />
 
             <Route
               exact
@@ -60,12 +62,50 @@ class App extends React.Component {
               component={EditClothing}
             />
 
+            <Route
+              exact
+              path="/shoes"
+              component={Shoes}
+            />
+
+            <Route
+              exact
+              path="/coats"
+              component={Coats}
+            />
+            
+            <Route
+              exact
+              path="/top"
+              component={Top}
+            />
+
+            <Route
+              exact
+              path="/bottom"
+              component={Bottom}
+            />
+
+             <Route
+              exact
+              path="/all"
+              component={All}
+            />
+
+            <Route
+              exact
+              path="/accessory"
+              component={Accessory}
+            />
+
+            {this.state.user ? <Closet /> : <Login />}
+
+            <Route exact path="/" component={Closet} />
+
           </Switch>
         </div>
       </section>
-      <footer>
-        {/* <p className="copyright">Style Inc. All Rights Reserved.</p> */}
-      </footer>
+      <Footer />
     </BrowserRouter>
 
     )

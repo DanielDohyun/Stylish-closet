@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import firebase from '../../firebase';
 import './Header.scss';
 
@@ -10,7 +10,6 @@ class Header extends Component {
       user: {}
     }
   }
-
 
   //this authListener is to track login state => if user is logged in => show signout button
   componentDidMount() {
@@ -29,7 +28,8 @@ class Header extends Component {
 
   GoogleLogout = () => {
     firebase.auth().signOut().then(function() {
-      // Sign-out successful.
+    window.location.reload(true);
+
     }).catch(function(error) {
       // An error happened.
     });
@@ -39,32 +39,31 @@ class Header extends Component {
 
     return (
 
-      <div className="header">
+      <div className="header nav navbar-default navbar-fixed-top">
         {/*replace with logo or style it */}
-        <p>StyLish Inc</p>
+        <p className="header__name">StyLish Inc</p>
 
         {
           this.state.user && 
-          <div className="header__nav">
-            <NavLink
-            exact
-            to="/"
-            className="header__Closet"
-            activeClassName="selected"
-            >
-              Closet{" "}
-            </NavLink>
-
-            <NavLink
+            <div className="header__link">
+              <NavLink
               exact
-              to="/Recommendation"
-              className="header__Recommendation"
+              to="/"
+              className="header__closet"
               activeClassName="selected"
-            >
-              Style of the day
-            </NavLink>
+              >
+                Closet{" "}
+              </NavLink>
 
-            <button className="nav__signout" onClick={this.GoogleLogout}>Signout</button>
+              <NavLink
+                exact
+                to="/Recommendation"
+                className="header__recommendation"
+                activeClassName="selected"
+              >
+                Style of the day
+              </NavLink>
+            <button className="header__out" onClick={this.GoogleLogout}>Signout</button>
           </div>
         }
 

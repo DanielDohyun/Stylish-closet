@@ -4,6 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 import Firebase from 'firebase';
 import firebase from '../../firebase';
 import backArrow from '../../assets/icons/back_arrow.svg';
+import './ShowClothing.scss';
 
 class ShowClothing extends Component {
   constructor(props){
@@ -60,7 +61,7 @@ class ShowClothing extends Component {
 
     return (
 
-      <div>
+      <div className="current">
         <Link to='/'>
         <img src={backArrow}/>
         </Link>

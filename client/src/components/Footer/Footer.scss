@@ -1,0 +1,124 @@
+@import "../../styles/fonts";
+@import "../../styles/mixins";
+@import "../../styles/partials.scss";
+
+.footer {
+  background-color: $club;
+  // background-color: $footer-back;
+  padding: 3rem 1rem;
+  color: $primary-color;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include tablet {
+    padding: 3rem 1.5rem;
+  }
+
+  @include desktop {
+    padding: 3rem 4rem;
+  }
+
+  &__inner {
+    @include desktop {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .sns {
+    @include tablet {
+      @include flex ($justify: space-between, $align: baseline);
+    }
+
+    &__heading {
+      font-size: 1.5rem;
+
+      @include tablet {
+        font-size: 1.8rem;
+        // margin: 0;
+      }
+    }
+
+    &__container { 
+      @include desktop {
+        padding-bottom: 1.7rem;
+      }
+    }
+
+    &__icon {
+      margin-right: 2rem;
+      height: 25px;
+
+      @include desktop {
+        height: 60px;
+      }
+    }
+
+  }
+  
+  .contact {
+    @include tablet {
+      @include flex ($justify: space-between, $align: initial);
+      // to make 3 columns in desktop mode
+    }
+
+    &__heading {
+      font-size: 1.5rem;
+
+      @include tablet {
+        font-size: 1.8rem;
+        // margin: 0;
+      }
+    }
+
+
+    &__name {
+      font-size: 0.84rem;
+      line-height: 1.25rem;
+      font-weight: 600;
+
+      @include tablet {
+        font-size: 0.98rem;
+      }
+
+    }
+
+    &__location, &__email {
+
+      @include tablet {
+      }
+    }
+
+    // mailto styling
+    &__email>a {
+      text-decoration: none;
+    }
+
+    .third {
+      @include tablet {
+        margin-right: 0.3rem;
+      }
+
+      @include desktop {
+        margin-right: 20rem;
+      }
+    }
+    .second {
+      @include tablet {
+        margin-left: -1.5rem;
+      }
+    }
+  }
+ 
+  // font size, line height and margin for copyright section
+  .copyright {
+    margin-top: 1.615rem;
+    align-self: center;
+
+
+    @include desktop {
+      margin-top: 1.615rem;
+    }
+  }
+}

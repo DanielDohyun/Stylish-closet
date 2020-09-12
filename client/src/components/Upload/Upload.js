@@ -6,18 +6,39 @@ import Modal from 'react-bootstrap4-modal';
 
 import './Upload.scss';
 
+// var userCur = firebase.auth().currentUser;
+
 class Upload extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('closet');
+    // this.ref = firebase.firestore().collection("closet").where("author", "==", user.uid);
     this.state = {
       image: null,
       style: '',
       color: '',
       url: '',
       name: '',
-      check: 0
+      category: '',
+      check: 0,
+      user: null
     }
+  }
+
+  //need this to update the user and get uid
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) =>{
+      console.log(user.uid)
+      if(user) {
+        this.setState({user})
+      } else {
+        this.setState({user: null})
+      }
+    })
   }
 
   onChange = (e) => {
@@ -36,58 +57,6 @@ class Upload extends Component {
     console.log(e.target.files[0]);
   }
 
-  // handleUpload = (e) => {
-    
-  //   e.preventDefault();
-
-  //   this.setState({
-  //     check: 1
-  //   });
-
-  //   const {image} = this.state;
-  //   const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
-  //   uploadTask.on('state_changed', (snapshot) =>{console.log(snapshot)},
-  //   (err) => {console.log(err);},
-
-  //   //target storage, and folder to get url => setState url
-  //   () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
-  //     this.setState({url});
-  //     // console.log(url);
-  //   })})
-  // }
-
-  // onSubmit = (e) => {
-  //   if(this.state.check === 1) {
-  //     e.preventDefault();
-  //     //chain this so that this runs after url value is passed
-  //     const {name, style, color, url} = this.state;
-  //     this.ref.add({
-  //       name,
-  //       style,
-  //       color,
-  //       url: this.state.url
-  //     }).then((docRef) => {
-  //       this.setState({
-  //         key: '',
-  //         style: '',
-  //         name: '',
-  //         color: '',
-  //         url: '' 
-  //       });
-  //     })
-  //     .catch(error => {console.error("error editing the document", error);
-  //     })
-  //     this.setState({
-  //       check:0
-  //     });
-  //     this.props.hideModal();
-  //   } else {
-  //     e.preventDefault();
-  //     alert('Please upload your image first');
-  //   }
-    
-  // }
-
   onSubmit = (e) => {
     e.preventDefault();
 
@@ -103,17 +72,24 @@ class Upload extends Component {
       // console.log(url);
 
       //chain this so that this runs after url value is passed
-      const {name, style, color} = this.state;
+      const {name, style, color, user, category} = this.state;
+      var userCur= firebase.auth().currentUser;
+      // this.ref.where("author", "==", userCur.uid).set({
+      // this.ref.doc(userCur.uid).add({
       this.ref.add({
+        author: user.uid,
         name,
         style,
         color,
-        url:this.state.url
+        url:this.state.url,
+        category
       }).then((docRef) => {
         this.setState({
           name: '',
           style: '',
-          url: '' 
+          url: '',
+          color: '',
+          category: '' 
         });
       })
       .catch(error => {console.error("error adding document", error);
@@ -139,9 +115,19 @@ class Upload extends Component {
 
 				<div className="upload-overlay"></div>
         <form className="upload">
+
+        <label htmlFor="category" className="upload__categoryLabel">Category</label> 
+          <select className="upload__select" single name="category" onChange={this.onChange}>
+            <option value="N/A">Category</option>
+            <option value="Coats&Jackets">Coats & Jackets</option>
+            <option value="Top">Top</option>
+            <option value="Bottom">Bottom</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Accessory">Accessory</option>
+          </select>
           
           <label htmlFor="color" className="upload__colorLabel">Color</label> 
-          <select className="upload__select" multiple name="color" onChange={this.onChange}>
+          <select className="upload__select" single name="color" onChange={this.onChange}>
             <option value="N/A">Color</option>
             <option value="White">White</option>
             <option value="Brown">Brown</option>
@@ -155,7 +141,7 @@ class Upload extends Component {
           </select>
 
           <label htmlFor="style" className="upload__styleLabel">style</label>
-          <select className="upload__select" multiple name="style" onChange={this.onChange}>
+          <select className="upload__select" single name="style" onChange={this.onChange}>
             <option value="N/A">Style</option>
             <option value="Casual">Casual</option>
             <option value="Sporty">Sporty</option>

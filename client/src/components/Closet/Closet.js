@@ -1,104 +1,89 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-// import 'bootstrap/dist/css/bootstrap.css';
-import db from '../../firebase';
-import Firebase from 'firebase';
 import firebase from '../../firebase';
 import Upload from '../Upload/Upload';
 import ShowClothing from '../ShowClothing/ShowClothing';
-import { Link } from "react-router-dom";
-
+import { useHistory, Link } from "react-router-dom";
 import './Closet.scss'
+import { auth } from 'firebase';
+
+var userCur= firebase.auth().currentUser;
+console.log(userCur)
 
 class Closet extends React.Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('closet');
-    this.unsubscribe = null;
     this.state = {
       clothes: [],
       show: false,
+      userUid: null,
+      user: null
     };
   }
 
-  showModal = () => {
-    this.setState({
-      show: true,
-    });
-  };
-
-  hideModal = e => {
-    this.setState({
-      show: !this.state.show,
-    });
-  };
-
-  componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
-
+   //need this to update the user and get uid
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) =>{
+      if(user) {
+        this.setState({userUid: user.uid, user: user });
+      } else {
+        this.setState({user: null})
+      }
+    })
   }
 
-  onCollectionUpdate = (querySnapshot) => {
-    console.log('querySnapshot', querySnapshot)
-    const clothes = [];
-    querySnapshot.forEach((doc) => {
-      console.log('doc data', doc.data())
-      const { style, color, url } = doc.data();
-      clothes.push({
-        key: doc.id,
-        doc,
-        style,
-        color,
-        url
-      })
-    })
-    this.setState({
-      clothes
-    });
-    // {console.log(clothes);}
+  componentDidMount() {
+    this.authListener();
+    console.log(this.state.user)
+  }
 
+  goToCloset = () => {
+    this.props.history.push('/closet');
   }
 
   render() {
     // console.log(this.state.clothes);
+    const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
+    console.log(this.state.user)
+    console.log(this.props)
+    if(!this.state.user) {
+      return null;
+    }
     return (
-      // <div className="App">
-      //   { 
-      //     this.state.clothes.map(clothes => (
-      //         <div className="clothes__container">
-      //           <p>{clothes.style}</p>
-      //           <p>{clothes.color}</p>
-      //           <Link to={`/show/${clothes.key}`}>
-      //             <img src={clothes.url} className="clothes__img" />
-      //           </Link>
-      //         </div>
-      //     ))
-      //   }
-      //   <button className="clothes__add" 	onClick={e => {
-      // 					this.showModal();}}>Add Clothes
-      //   </button>
-
-      //   <Upload 
-      //     show={this.state.show}
-      // 		hideModal={this.hideModal} 
-      //   />
-
-      // </div>
+    
       <div className="home-inner">
-        <h3 className="welcome-text">Stylish Closet <br/><span>made by Daniel Kim <i className="fa fa-heart"></i></span></h3>
+        <h3 className="welcome-text">Stylish Closet <br/><span>Welcome {this.state.user.displayName}</span></h3>
         <div className="main">
-          <a className="div1" onClick={e => { }}></a>
+        
+        <Link to="/shoes" className="div1">
+          <div className="div1 closet__shoes"> </div>
+        </Link>
           <div className="div2"></div>
-          <div className="div3">
-            <a className="div3-1"></a>
-            <div className="div3-2"></div>
-          </div>
+
+          <Link to="/coats" className="div3">
+            <div className="div3 ">
+              <div className="div3-1"></div>
+              <div className="div3-2"></div>
+            </div>
+          </Link> 
+
           <div className="div4">
-            <a className="div4-1"></a>
-            <a className="div4-2"></a>
+          <Link to="/top" className="div4-1">
+            <div className="div4-1 closet__top"></div>
+          </Link>
+
+          <Link to="/bottom" className="div4-2">
+            <div className="div4-2 closet__bottom"></div>
+          </Link>  
           </div>
-          <div className="div5"></div>
-          <a className="div6"></a>
+
+          <Link to="/all" className="div5">
+            <div className="div5"></div>
+          </Link>
+
+          <Link to="/accessory" className="div6">
+            <div className="div6 closet__accessory"></div>
+          </Link>
         </div>
       </div>
     )

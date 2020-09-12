@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase';
 import { Redirect } from 'react-router-dom';
+import './Signup.scss';
 
 class Signup extends Component {
   constructor(props) {
@@ -20,16 +21,17 @@ class Signup extends Component {
   signup = (e) => {
     e.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) =>{
-        firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-        }).catch(function(error) {
-          // An error happened.
-        });   
-    }).catch(err=> console.log(err));
-    alert('account successfully created!');
-    this.setState({
-      redirect: true
-    });  
+      u.user.updateProfile({
+        displayName: this.state.first
+      })
+      alert('account successfully created!')
+      firebase.auth().signOut().then(() => {
+          this.setState({
+            redirect: true
+          });
+          window.location.reload(true);
+        });
+    }).catch(err=> alert(err.message));
   }
 
   handleChange = (e) => {
@@ -61,9 +63,9 @@ class Signup extends Component {
     return (
 
       <div>
-          <form className="login">
+          <form className="sign">
             <input 
-            className="login__first"
+            className="sign__First"
             name="first"
             type="text"
             id="first"
@@ -73,7 +75,7 @@ class Signup extends Component {
             />
 
             <input 
-            className="login__last"
+            className="sign__last"
             name="last"
             type="text"
             id="last"
@@ -83,7 +85,7 @@ class Signup extends Component {
             />
 
             <input 
-            className="login__birth"
+            className="sign__birth"
             name="birth"
             type="text"
             id="birth"
@@ -93,7 +95,7 @@ class Signup extends Component {
             />
             
             <input 
-            className="login__email"
+            className="sign__email"
             name="email"
             type="email"
             id="email"
@@ -102,7 +104,7 @@ class Signup extends Component {
             value={this.state.email}
             />
             <input 
-            className="login__password"
+            className="sign__password"
             name="password"
             type="password"
             id="password"
@@ -111,7 +113,7 @@ class Signup extends Component {
             value={this.state.password}
             />
 
-            <button onClick={this.signup} className="login__signupBtn">Signup</button>
+            <button onClick={this.signup} className="sign__signupBtn">Signup</button>
         </form>
       </div>
     )

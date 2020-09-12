@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import firebase from '../../firebase';
+import './Login.scss';
 
 class Login extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Login extends Component {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
       console.log(u);
     }).catch(err => {
-      console.log(err)});
+      alert(err.message)});
   }
 
   handleChange = (e) => {
@@ -41,7 +42,7 @@ class Login extends Component {
       var user = result.user;
       // ...
     }).catch(function(error) {
-     console.log(error)
+     alert(error.message);
     });
   }
 
@@ -73,33 +74,39 @@ class Login extends Component {
 
     return (
 
-      <div>
+      <div className="login-container">
         <form className="login">
-          <input 
-          className="login__email"
-          name="email"
-          type="email"
-          id="email"
-          placeholder="enter email address"
-          onChange={this.handleChange}
-          value={this.state.email}
-          />
-          <input 
-          className="login__password"
-          name="password"
-          type="password"
-          id="password"
-          placeholder="enter password"
-          onChange={this.handleChange}
-          value={this.state.password}
-          />
 
-          <button onClick={this.login} className="login__loginBtn">Login</button>
-          <Link to="/Signup" >
-            <button className="login__signupBtn">Signup</button>
-          </Link>
-          <button type="button" onClick={this.onSubmit} className="login__google">Login with Google</button>
+          <div className="login__box">
+            <input 
+            className="login__email"
+            name="email"
+            type="email"
+            id="email"
+            placeholder="enter email address"
+            onChange={this.handleChange}
+            value={this.state.email}
+            />
+            <input 
+            className="login__password"
+            name="password"
+            type="password"
+            id="password"
+            placeholder="enter password"
+            onChange={this.handleChange}
+            value={this.state.password}
+            />
 
+            <button onClick={this.login} className="login__loginBtn">Login</button>
+          </div>
+          
+          <div className="login__btn">
+            <Link to="/Signup" >
+              <button className="login__signupBtn">Signup</button>
+            </Link>
+            <button type="button" onClick={this.onSubmit} className="login__google">Login with Google</button>
+          </div>
+          
         </form>
       </div>
     )
