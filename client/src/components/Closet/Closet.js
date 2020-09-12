@@ -44,8 +44,7 @@ class Closet extends React.Component {
   render() {
     // console.log(this.state.clothes);
     const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
-    console.log(this.state.user)
-    console.log(this.props)
+    // console.log(this.props)
     if(!this.state.user) {
       return null;
     }
