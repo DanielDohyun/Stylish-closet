@@ -59,17 +59,31 @@ class Closet extends React.Component {
           <div className="div1 closet__shoes"> </div>
         </Link>
           <div className="div2"></div>
+
+          <Link to="/coats" className="div3">
             <div className="div3 ">
               <div className="div3-1"></div>
               <div className="div3-2"></div>
             </div>
-          <div className="div4 closet__coats">
+          </Link> 
+
+          <div className="div4">
+          <Link to="/top" className="div4-1">
             <div className="div4-1 closet__top"></div>
+          </Link>
+
+          <Link to="/bottom" className="div4-2">
             <div className="div4-2 closet__bottom"></div>
+          </Link>  
           </div>
 
-          <div className="div5"></div>
-          <div className="div6 closet__accessory"></div>
+          <Link to="/all" className="div5">
+            <div className="div5"></div>
+          </Link>
+
+          <Link to="/accessory" className="div6">
+            <div className="div6 closet__accessory"></div>
+          </Link>
         </div>
       </div>
     )
