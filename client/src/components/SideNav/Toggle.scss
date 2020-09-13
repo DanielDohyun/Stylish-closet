@@ -1,0 +1,26 @@
+.toggle-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  // z-index:200;
+}
+
+.toggle-button:focus {
+  outline: none;
+  // z-index:200;
+
+}
+
+.toggle-btn div {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  // z-index:300;
+}

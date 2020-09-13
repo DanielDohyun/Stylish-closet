@@ -11,10 +11,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   background-color: $club;
+  padding: 0 3rem 0 2rem;
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
 
   &__name {
     font-weight: 600;
+    margin-left: 1rem;
   }
 
   &__closet, &__recommendation {

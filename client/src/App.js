@@ -16,6 +16,7 @@ import Top from './components/Top/Top';
 import Bottom from './components/Bottom/Bottom';
 import All from './components/All/All';
 import Accessory from './components/Accessory/Accessory';
+import SideNav from './components/SideNav/SideNav';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,71 +44,73 @@ class App extends React.Component {
   render () {
     console.log(this.state.user);
     return (
-      <BrowserRouter>
-      <Header />
-      <section className="main">
-        <div className="main-content">
-          <Switch>
-            <Route exact path="/Signup" component={Signup} />
+      <div id="App">
+        <BrowserRouter>
+        <Header />
+        <SideNav />
+        <section className="main">
+          <div className="main-content">
+            <Switch>
+              <Route exact path="/Signup" component={Signup} />
 
-            <Route
-              exact
-              path="/show/:id"
-              component={ShowClothing}
-            />
+              <Route
+                exact
+                path="/show/:id"
+                component={ShowClothing}
+              />
 
-            <Route
-              exact
-              path="/edit/:id"
-              component={EditClothing}
-            />
+              <Route
+                exact
+                path="/edit/:id"
+                component={EditClothing}
+              />
 
-            <Route
-              exact
-              path="/shoes"
-              component={Shoes}
-            />
+              <Route
+                exact
+                path="/shoes"
+                component={Shoes}
+              />
 
-            <Route
-              exact
-              path="/coats"
-              component={Coats}
-            />
-            
-            <Route
-              exact
-              path="/top"
-              component={Top}
-            />
+              <Route
+                exact
+                path="/coats"
+                component={Coats}
+              />
+              
+              <Route
+                exact
+                path="/top"
+                component={Top}
+              />
 
-            <Route
-              exact
-              path="/bottom"
-              component={Bottom}
-            />
+              <Route
+                exact
+                path="/bottom"
+                component={Bottom}
+              />
 
-             <Route
-              exact
-              path="/all"
-              component={All}
-            />
+              <Route
+                exact
+                path="/all"
+                component={All}
+              />
 
-            <Route
-              exact
-              path="/accessory"
-              component={Accessory}
-            />
+              <Route
+                exact
+                path="/accessory"
+                component={Accessory}
+              />
 
-            {this.state.user ? <Closet /> : <Login />}
+              {this.state.user ? <Closet /> : <Login />}
 
-            <Route exact path="/" component={Closet} />
+              <Route exact path="/" component={Closet} />
 
-          </Switch>
-        </div>
-      </section>
-      <Footer />
-    </BrowserRouter>
-
+            </Switch>
+          </div>
+        </section>
+        <Footer />
+        </BrowserRouter>
+      </div>
     )
   }
 }

@@ -2,13 +2,14 @@
 @import "../../styles/mixins";
 @import "../../styles/partials.scss";
 
-.home-inner {
-    height: 90vh;
+.home-container {
+    height: 100vw;
     position: relative;
     background-color: #fff;
     animation: opacity-background 1s 3s ease-in-out both;
     // padding-top: 10vh;
     width: 100%;
+    // margin-top: 3.4rem;
     margin-top: 6rem;
 }
 @keyframes opacity-background {
@@ -21,7 +22,7 @@
 }
 
 // ################# Welcome text animation #####################
-.home-inner:before {
+.home-container:before {
     content: '';
     background-color: #000;
     height: 100%;
@@ -31,7 +32,7 @@
     left: 0;
     animation: overlay 1s 2s ease-in-out;
 }
-.home-inner .welcome-text {
+.home-container .welcome-text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -43,11 +44,11 @@
     margin: 0;
     animation: slideup 2s 0s ease-in-out both;
 }
-.home-inner .welcome-text span {
+.home-container .welcome-text span {
     font-weight: 200;
     font-size: 30px;
 }
-.home-inner .welcome-text .fa {
+.home-container .welcome-text .fa {
     color: red;
 }
 @keyframes slideup {
@@ -83,7 +84,7 @@
 }
 // ################# Closet section ####################
 
-.home-inner .main {
+.home-container .home-inner {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -97,6 +98,7 @@
     display: flex;
     opacity: 0;
     animation: opacity-image 1s 3s ease-in-out both;
+    // margin-top: 15rem;
 }
 
 @keyframes opacity-image {

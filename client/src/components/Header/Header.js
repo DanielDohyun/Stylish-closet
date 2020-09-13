@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, Redirect } from "react-router-dom";
 import firebase from '../../firebase';
 import './Header.scss';
+import Toggle from '../SideNav/Toggle';
 
 class Header extends Component {
   constructor(props) {
@@ -40,9 +41,10 @@ class Header extends Component {
     return (
 
       <div className="header nav navbar-default navbar-fixed-top">
-        {/*replace with logo or style it */}
-        <p className="header__name">StyLish Inc</p>
-
+        <div className="header__left">
+          <Toggle />
+          <p className="header__name">Closet Organizer</p>
+        </div>
         {
           this.state.user && 
             <div className="header__link">
