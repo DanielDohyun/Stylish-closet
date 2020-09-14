@@ -17,12 +17,14 @@ import Bottom from './components/Bottom/Bottom';
 import All from './components/All/All';
 import Accessory from './components/Accessory/Accessory';
 import SideNav from './components/SideNav/SideNav';
+import Backdrop from './components/Backdrop/Backdrop';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      sideOpen: false
     }
   }
 
@@ -41,13 +43,34 @@ class App extends React.Component {
     })
   }
 
+  toggleHandler = () => {
+    this.setState((prevState) => {
+      return {sideOpen: !prevState.sideOpen};
+    });
+  }
+
+  backdropHandler = () => {
+    this.setState({
+      sideOpen: false
+    });
+  }
+
   render () {
-    console.log(this.state.user);
+    // console.log(this.state.user);
+    // let side;
+    let backdrop;
+
+    if(this.state.sideOpen) {
+      // side = <SideNav />;
+      backdrop = <Backdrop close={this.backdropHandler} />
+    }
     return (
-      <div id="App">
+      <div id="App" className="App" style={{height: '100%'}}>
         <BrowserRouter>
-        <Header />
-        <SideNav />
+        <Header toggleHandler={this.toggleHandler} />
+        {/* {side} */}
+        <SideNav show={this.state.sideOpen} />
+        {backdrop}
         <section className="main">
           <div className="main-content">
             <Switch>

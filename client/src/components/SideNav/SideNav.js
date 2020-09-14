@@ -1,8 +1,13 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
+import './SideNav.scss';
 
 class SideNav extends React.Component {
+
   render() {
+  
+    let sideClasses = ['side'];
+
     return (
       <div className="side">
 
