@@ -46,7 +46,7 @@ class Accessory extends React.Component {
 
   getUserData= (uid) => {
     console.log(uid);
-    firebase.firestore().collection('closet').where("author", "==", uid).onSnapshot(this.onCollectionUpdate);
+    firebase.firestore().collection('closet').where("author", "==", uid).orderBy('createdAt', 'desc').onSnapshot(this.onCollectionUpdate);
 }
 
   componentDidMount() {
@@ -80,6 +80,11 @@ class Accessory extends React.Component {
     const filtered = this.state.clothes.filter(clothes => clothes.category == "Accessory"); 
     return (
       <div className="clothes">
+
+         <button className="clothes__add" 	onClick={e => {
+      					this.showModal();}}>Add Clothes
+        </button>
+
          { 
           filtered.map(clothes => (
               <div className="clothes__inner">
@@ -91,9 +96,6 @@ class Accessory extends React.Component {
               </div>
           ))
         }
-        <button className="clothes__add" 	onClick={e => {
-      					this.showModal();}}>Add Clothes
-        </button>
 
         <Upload 
           show={this.state.show}

@@ -11,8 +11,7 @@ class ShowClothing extends Component {
     super(props);
     this.state = {
       clothing: [],
-      key: '',
-      redirect: false
+      key: ''
     }
   }
 
@@ -38,33 +37,30 @@ class ShowClothing extends Component {
     var desertRef = firebase.storage().refFromURL(this.state.clothing.url)
     firebase.firestore().collection('closet').doc(id).delete().then(() => {
       console.log('document is successfully deleted')
-      this.props.history.push('/');
-      // this.props.hideClothing();
+      this.goBack();
     }).catch((error) => {console.error("error is ", error)})
     desertRef.delete().then(function(){
       console.log('file deleted');
-      this.setState({
-        redirect:true
-      })
+      this.goBack();
     }).catch(function(error){
       console.log("error while deleting the file ");
     })
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
   }
 
   render() {
     const {ShowClothing, hideClothing} = this.props;
     if (!this.state.clothing) {
 			return null;
-		} else if (this.state.redirect === true) {
-			return <Redirect to="/" />;
 		}
 
     return (
 
       <div className="current">
-        <Link to='/'>
-        <img src={backArrow}/>
-        </Link>
+        <img src={backArrow} onClick={this.goBack}/>
           
           <div className="current__img">
             <img src={this.state.clothing.url} className="upload-img" />

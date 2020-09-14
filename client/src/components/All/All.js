@@ -79,7 +79,11 @@ class All extends React.Component {
   render() {
     return (
       <div className="clothes">
-         { 
+        <button className="clothes__add" 	onClick={e => {
+      					this.showModal();}}>Add Clothes
+        </button>
+
+        { 
           this.state.clothes.map(clothes => (
               <div className="clothes__inner">
                 <p>{clothes.style}</p>
@@ -90,9 +94,6 @@ class All extends React.Component {
               </div>
           ))
         }
-        <button className="clothes__add" 	onClick={e => {
-      					this.showModal();}}>Add Clothes
-        </button>
 
         <Upload 
           show={this.state.show}

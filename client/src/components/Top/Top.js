@@ -80,7 +80,12 @@ class Top extends React.Component {
     const filtered = this.state.clothes.filter(clothes => clothes.category == "Top"); 
     return (
       <div className="clothes">
-         { 
+
+        <button className="clothes__add" 	onClick={e => {
+      					this.showModal();}}>Add Clothes
+        </button>
+
+        { 
           filtered.map(clothes => (
               <div className="clothes__inner">
                 <p>{clothes.style}</p>
@@ -91,9 +96,6 @@ class Top extends React.Component {
               </div>
           ))
         }
-        <button className="clothes__add" 	onClick={e => {
-      					this.showModal();}}>Add Clothes
-        </button>
 
         <Upload 
           show={this.state.show}

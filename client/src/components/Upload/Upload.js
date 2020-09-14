@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 import Firebase from 'firebase';
+import { timestamp } from '../../firebase';
 import firebase from '../../firebase';
 import Modal from 'react-bootstrap4-modal';
 
@@ -12,7 +13,6 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.ref = firebase.firestore().collection('closet');
-    // this.ref = firebase.firestore().collection("closet").where("author", "==", user.uid);
     this.state = {
       image: null,
       style: '',
@@ -69,20 +69,17 @@ class Upload extends Component {
     //target storage, and folder to get url => setState url
     () => {firebase.storage().ref('closet').child(image.name).getDownloadURL().then(url => {
       this.setState({url});
-      // console.log(url);
 
       //chain this so that this runs after url value is passed
       const {name, style, color, user, category} = this.state;
       var userCur= firebase.auth().currentUser;
-      // this.ref.where("author", "==", userCur.uid).set({
-      // this.ref.doc(userCur.uid).add({
       this.ref.add({
         author: user.uid,
         name,
         style,
         color,
         url:this.state.url,
-        category
+        category,
       }).then((docRef) => {
         this.setState({
           name: '',

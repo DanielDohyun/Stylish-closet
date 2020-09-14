@@ -2,3 +2,17 @@
 @import "../../styles/partials.scss";
 
 
+.clothes {
+  display: flex;
+  flex-direction: column;
+
+  &__add {
+    width: 120px;
+    align-self: center;
+    margin-right: 2rem;
+  }
+
+  &__img {
+    height:200px;
+  }
+}

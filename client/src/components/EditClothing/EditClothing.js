@@ -104,8 +104,6 @@ class EditClothing extends Component {
           color: '',
           url: '' 
         });
-        // console.log(this.props)
-        // console.log(this.state.url)
         this.props.history.push("/show/" + this.props.match.params.id)
       })
       .catch(error => {console.error("error editing the document", error);
