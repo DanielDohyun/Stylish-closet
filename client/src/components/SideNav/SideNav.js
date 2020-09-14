@@ -6,10 +6,13 @@ class SideNav extends React.Component {
 
   render() {
   
-    let sideClasses = ['side'];
+    let sideClasses = 'side';
+    if(this.props.show) {
+      sideClasses = 'side open';
+    }
 
     return (
-      <div className="side">
+      <div className={sideClasses} >
 
         <ul>
           <li>
