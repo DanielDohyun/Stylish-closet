@@ -46,7 +46,7 @@ class Bottom extends React.Component {
 
   getUserData= (uid) => {
     console.log(uid);
-    firebase.firestore().collection('closet').where("author", "==", uid).onSnapshot(this.onCollectionUpdate);
+    firebase.firestore().collection('closet').where("author", "==", uid).orderBy('createdAt', 'desc').onSnapshot(this.onCollectionUpdate);
 }
 
   componentDidMount() {
@@ -91,7 +91,7 @@ class Bottom extends React.Component {
                 <p>{clothes.style}</p>
                 <p>{clothes.color}</p>
                 <Link to={`/show/${clothes.key}`}>
-                  <img src={clothes.url} className="clothes__img" />
+                  <img src={clothes.url} className="clothes__img" alt="photo" />
                 </Link>
               </div>
           ))

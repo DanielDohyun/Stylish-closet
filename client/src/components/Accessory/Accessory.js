@@ -91,7 +91,7 @@ class Accessory extends React.Component {
                 {/* <p>{clothes.style}</p>
                 <p>{clothes.color}</p> */}
                 <Link to={`/show/${clothes.key}`}>
-                  <img src={clothes.url} className="clothes__img" />
+                  <img src={clothes.url} className="clothes__img" alt="photo" />
                 </Link>
               </div>
           ))

@@ -4,16 +4,12 @@
 
 .footer {
   background-color: $club;
-  // background-color: $footer-back;
   padding: 3rem 1rem;
   color: $primary-color;
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 3rem;
-  // position: absolute;
-  // bottom: 0;
-  // right: 0;
 
   @include tablet {
     padding: 3rem 1.5rem;

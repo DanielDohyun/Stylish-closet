@@ -4,6 +4,7 @@ import firebase from '../../firebase';
 import Upload from '../Upload/Upload';
 import { Link } from "react-router-dom";
 import './All.scss';
+import { motion } from 'framer-motion';
 
 var userCur= firebase.auth().currentUser;
 console.log(userCur)
@@ -46,7 +47,7 @@ class All extends React.Component {
 
   getUserData= (uid) => {
     console.log(uid);
-    firebase.firestore().collection('closet').where("author", "==", uid).onSnapshot(this.onCollectionUpdate);
+    firebase.firestore().collection('closet').where("author", "==", uid).orderBy('createdAt', 'desc').onSnapshot(this.onCollectionUpdate);
 }
 
   componentDidMount() {
@@ -79,21 +80,36 @@ class All extends React.Component {
   render() {
     return (
       <div className="clothes">
-        <button className="clothes__add" 	onClick={e => {
-      					this.showModal();}}>Add Clothes
-        </button>
+        <div className="clothes__addBtn">
+          <button className="clothes__add" 	onClick={e => {
+                  this.showModal();}}>Add Clothes
+          </button>
+          <button className="clothes__add-mobile" 	onClick={e => {
+                  this.showModal();}}>+
+          </button>
+        </div>
 
-        { 
-          this.state.clothes.map(clothes => (
-              <div className="clothes__inner">
-                <p>{clothes.style}</p>
-                <p>{clothes.color}</p>
-                <Link to={`/show/${clothes.key}`}>
-                  <img src={clothes.url} className="clothes__img" />
-                </Link>
-              </div>
-          ))
-        }
+        <div className="clothes__grid"> 
+          { 
+            this.state.clothes.map(clothes => (
+                <div className="clothes__inner">
+                  {/* <p>{clothes.style}</p>
+                  <p>{clothes.color}</p> */}
+                  <motion.div className="clothes__imgWrap"
+                    layout
+                  >
+                    <Link to={`/show/${clothes.key}`} className="clothes__img">
+                      <motion.img src={clothes.url} className="clothes__img" alt="photo"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{delay: 1}}
+                      />
+                    </Link>
+                  </motion.div>
+                </div>
+            ))
+          }
+        </div>
 
         <Upload 
           show={this.state.show}

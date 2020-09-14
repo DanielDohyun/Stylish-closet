@@ -4,6 +4,7 @@ import Firebase from 'firebase';
 import { timestamp } from '../../firebase';
 import firebase from '../../firebase';
 import Modal from 'react-bootstrap4-modal';
+import close from '../../assets/icons/close.svg';
 
 import './Upload.scss';
 
@@ -73,6 +74,8 @@ class Upload extends Component {
       //chain this so that this runs after url value is passed
       const {name, style, color, user, category} = this.state;
       var userCur= firebase.auth().currentUser;
+      const createdAt = timestamp();
+
       this.ref.add({
         author: user.uid,
         name,
@@ -80,6 +83,8 @@ class Upload extends Component {
         color,
         url:this.state.url,
         category,
+        createdAt
+        
       }).then((docRef) => {
         this.setState({
           name: '',
@@ -110,46 +115,50 @@ class Upload extends Component {
     return (
       <>
 
-				<div className="upload-overlay"></div>
+				<div className="upload-overlay" onClick={hideModal} ></div>
         <form className="upload">
+          <img alt="close" className="upload__close" src={close} onClick={hideModal} /> 
 
-        <label htmlFor="category" className="upload__categoryLabel">Category</label> 
-          <select className="upload__select" single name="category" onChange={this.onChange}>
-            <option value="N/A">Category</option>
-            <option value="Coats&Jackets">Coats & Jackets</option>
-            <option value="Top">Top</option>
-            <option value="Bottom">Bottom</option>
-            <option value="Shoes">Shoes</option>
-            <option value="Accessory">Accessory</option>
-          </select>
-          
-          <label htmlFor="color" className="upload__colorLabel">Color</label> 
-          <select className="upload__select" single name="color" onChange={this.onChange}>
-            <option value="N/A">Color</option>
-            <option value="White">White</option>
-            <option value="Brown">Brown</option>
-            <option value="Black">Black</option>
-            <option value="Blue">Blue</option>
-            <option value="Navy">Navy</option>
-            <option value="Red">Red</option>
-            <option value="Yellow">Yellow</option>
-            <option value="Pink">Pink</option>
-            <option value="Gray">Gray</option>
-          </select>
+          <div className="upload__inner">
 
-          <label htmlFor="style" className="upload__styleLabel">style</label>
-          <select className="upload__select" single name="style" onChange={this.onChange}>
-            <option value="N/A">Style</option>
-            <option value="Casual">Casual</option>
-            <option value="Sporty">Sporty</option>
-            <option value="Formal">Formal</option>
-            <option value="Vintage">Vintage</option>
-            <option value="Vacation Look">Vacation Look</option>
-          </select>  
+            <label htmlFor="category" className="upload__categoryLabel">Category</label> 
+              <select className="upload__select" single name="category" onChange={this.onChange}>
+                <option value="N/A">Category</option>
+                <option value="Coats&Jackets">Coats & Jackets</option>
+                <option value="Top">Top</option>
+                <option value="Bottom">Bottom</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Accessory">Accessory</option>
+              </select>
+              
+              <label htmlFor="color" className="upload__colorLabel">Color</label> 
+              <select className="upload__select" single name="color" onChange={this.onChange}>
+                <option value="N/A">Color</option>
+                <option value="White">White</option>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blue">Blue</option>
+                <option value="Navy">Navy</option>
+                <option value="Red">Red</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Pink">Pink</option>
+                <option value="Gray">Gray</option>
+              </select>
 
-          <input className="upload__imgInput" type="file" onChange={this.handleChange} />
-          {/* <button className="upload__first" onClick={this.handleUpload}>Upload Photo</button> */}
-          <img src={this.state.url} className="upload__img" />
+              <label htmlFor="style" className="upload__styleLabel">Style</label>
+              <select className="upload__select" single name="style" onChange={this.onChange}>
+                <option value="N/A">Style</option>
+                <option value="Casual">Casual</option>
+                <option value="Sporty">Sporty</option>
+                <option value="Formal">Formal</option>
+                <option value="Vintage">Vintage</option>
+                <option value="Vacation Look">Vacation Look</option>
+              </select>  
+
+              <input className="upload__imgInput" type="file" onChange={this.handleChange} />
+              <img src={this.state.url} className="upload__img" />
+
+          </div>  
 
           <div className="upload__btn">
             <button className="upload__cancel" onClick={hideModal}>Cancel</button>
