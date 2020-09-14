@@ -57,14 +57,14 @@ class Header extends Component {
                 Closet{" "}
               </NavLink>
 
-              <NavLink
+              {/* <NavLink
                 exact
                 to="/Recommendation"
                 className="header__recommendation"
                 activeClassName="selected"
               >
                 Style of the day
-              </NavLink>
+              </NavLink> */}
             <button className="header__out" onClick={this.GoogleLogout}>Signout</button>
           </div>
         }

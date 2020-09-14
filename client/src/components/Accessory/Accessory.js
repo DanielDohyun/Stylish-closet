@@ -79,13 +79,12 @@ class Accessory extends React.Component {
   render() {
     const filtered = this.state.clothes.filter(clothes => clothes.category == "Accessory"); 
     return (
-      <div className="App">
-        <h2>hello</h2>
+      <div className="clothes">
          { 
           filtered.map(clothes => (
-              <div className="clothes__container">
-                <p>{clothes.style}</p>
-                <p>{clothes.color}</p>
+              <div className="clothes__inner">
+                {/* <p>{clothes.style}</p>
+                <p>{clothes.color}</p> */}
                 <Link to={`/show/${clothes.key}`}>
                   <img src={clothes.url} className="clothes__img" />
                 </Link>

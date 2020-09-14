@@ -1,10 +1,6 @@
-body {
-  margin: 0;
-}
-
 .App {
   text-align: center;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   height: 100%;
 }
 
@@ -41,12 +37,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-.main {
-  margin-top: 6rem;
-}
-
-section {
-  margin-top: 6rem;
 }

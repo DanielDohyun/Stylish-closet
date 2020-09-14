@@ -78,10 +78,10 @@ class All extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="clothes">
          { 
           this.state.clothes.map(clothes => (
-              <div className="clothes__container">
+              <div className="clothes__inner">
                 <p>{clothes.style}</p>
                 <p>{clothes.color}</p>
                 <Link to={`/show/${clothes.key}`}>

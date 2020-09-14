@@ -7,13 +7,13 @@
   z-index: 400;
   width: 100%;
   top: 0;
-  // overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   background-color: $club;
   padding: 0 3rem 0 2rem;
+  height: 60px;
 
   &__left {
     display: flex;
@@ -28,11 +28,16 @@
   &__closet, &__recommendation {
     text-decoration: none;
     color: $primary-color;
-    // display: none;
+  }
 
-    // @include tablet {
-    //   display: initial;
-    // }
+  &__closet {
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: initial;
+    }
   }
 
   &__recommendation {
@@ -40,6 +45,6 @@
   }
 
   &__out {
-    margin-right: 1rem;
+    margin: 0 1rem;
   }
 }

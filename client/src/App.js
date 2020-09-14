@@ -56,82 +56,80 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log(this.state.user);
-    // let side;
     let backdrop;
 
     if(this.state.sideOpen) {
-      // side = <SideNav />;
       backdrop = <Backdrop close={this.backdropHandler} />
     }
     return (
       <div id="App" className="App" style={{height: '100%'}}>
         <BrowserRouter>
-        <Header toggleHandler={this.toggleHandler} />
-        {/* {side} */}
-        <SideNav show={this.state.sideOpen} />
-        {backdrop}
-        <section className="main">
-          <div className="main-content">
-            <Switch>
-              <Route exact path="/Signup" component={Signup} />
+        
+          <Header toggleHandler={this.toggleHandler} />
+          <SideNav show={this.state.sideOpen} />
+          {backdrop}
 
-              <Route
-                exact
-                path="/show/:id"
-                component={ShowClothing}
-              />
+          <section className="main" id="mainBody" >
+            <div className="main-content">
+              <Switch>
+                <Route exact path="/Signup" component={Signup} />
 
-              <Route
-                exact
-                path="/edit/:id"
-                component={EditClothing}
-              />
+                <Route
+                  exact
+                  path="/show/:id"
+                  component={ShowClothing}
+                />
 
-              <Route
-                exact
-                path="/shoes"
-                component={Shoes}
-              />
+                <Route
+                  exact
+                  path="/edit/:id"
+                  component={EditClothing}
+                />
 
-              <Route
-                exact
-                path="/coats"
-                component={Coats}
-              />
-              
-              <Route
-                exact
-                path="/top"
-                component={Top}
-              />
+                <Route
+                  exact
+                  path="/shoes"
+                  component={Shoes}
+                />
 
-              <Route
-                exact
-                path="/bottom"
-                component={Bottom}
-              />
+                <Route
+                  exact
+                  path="/coats"
+                  component={Coats}
+                />
+                
+                <Route
+                  exact
+                  path="/top"
+                  component={Top}
+                />
 
-              <Route
-                exact
-                path="/all"
-                component={All}
-              />
+                <Route
+                  exact
+                  path="/bottom"
+                  component={Bottom}
+                />
 
-              <Route
-                exact
-                path="/accessory"
-                component={Accessory}
-              />
+                <Route
+                  exact
+                  path="/all"
+                  component={All}
+                />
 
-              {this.state.user ? <Closet /> : <Login />}
+                <Route
+                  exact
+                  path="/accessory"
+                  component={Accessory}
+                />
 
-              <Route exact path="/" component={Closet} />
+                {this.state.user ? <Closet /> : <Login />}
 
-            </Switch>
-          </div>
-        </section>
-        <Footer />
+                <Route exact path="/" component={Closet} />
+
+              </Switch>
+            </div>
+          </section>
+          <Footer />
         </BrowserRouter>
       </div>
     )

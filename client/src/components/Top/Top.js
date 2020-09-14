@@ -79,11 +79,10 @@ class Top extends React.Component {
   render() {
     const filtered = this.state.clothes.filter(clothes => clothes.category == "Top"); 
     return (
-      <div className="App">
-        <h2>hello</h2>
+      <div className="clothes">
          { 
           filtered.map(clothes => (
-              <div className="clothes__container">
+              <div className="clothes__inner">
                 <p>{clothes.style}</p>
                 <p>{clothes.color}</p>
                 <Link to={`/show/${clothes.key}`}>
