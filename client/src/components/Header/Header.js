@@ -43,7 +43,7 @@ class Header extends Component {
       <div className="header nav navbar-default navbar-fixed-top">
         <div className="header__left">
           <Toggle click={this.props.toggleHandler} />
-          <p className="header__name">Closet Organizer</p>
+          <p className="header__name"><a href="/"> Closet Organizer </a></p>
         </div>
         {
           this.state.user && 

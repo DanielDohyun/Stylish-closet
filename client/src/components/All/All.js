@@ -5,6 +5,7 @@ import Upload from '../Upload/Upload';
 import { Link } from "react-router-dom";
 import './All.scss';
 import { motion } from 'framer-motion';
+import add from '../../assets/icons/upload.png';
 
 var userCur= firebase.auth().currentUser;
 console.log(userCur)
@@ -85,7 +86,8 @@ class All extends React.Component {
                   this.showModal();}}>Add Clothes
           </button>
           <button className="clothes__add-mobile" 	onClick={e => {
-                  this.showModal();}}>+
+                  this.showModal();}}>
+                  <img src={add} alt="add" className="clothes__icon" />
           </button>
         </div>
 

@@ -4,6 +4,8 @@ import firebase from '../../firebase';
 import Upload from '../Upload/Upload';
 import { Link } from "react-router-dom";
 import './Shoes.scss';
+import { motion } from 'framer-motion';
+import add from '../../assets/icons/upload.png';
 
 var userCur= firebase.auth().currentUser;
 console.log(userCur)
@@ -77,25 +79,42 @@ class Shoes extends React.Component {
   }
 
   render() {
+
     const filtered = this.state.clothes.filter(clothes => clothes.category == "Shoes"); 
+    
     return (
       <div className="clothes">
+        <div className="clothes__addBtn">
+          <button className="clothes__add" 	onClick={e => {
+                  this.showModal();}}>Add Clothes
+          </button>
+          <button className="clothes__add-mobile" 	onClick={e => {
+                  this.showModal();}}>
+                  <img src={add} alt="add" className="clothes__icon" />
+          </button>
+        </div>
 
-      <button className="clothes__add" 	onClick={e => {
-      					this.showModal();}}>Add Clothes
-      </button>
-
-         { 
-          filtered.map(clothes => (
-              <div className="clothes__inner">
-                <p>{clothes.style}</p>
-                <p>{clothes.color}</p>
-                <Link to={`/show/${clothes.key}`}>
-                  <img src={clothes.url} className="clothes__img" alt="photo" />
-                </Link>
-              </div>
-          ))
-        }
+        <div className="clothes__grid"> 
+          { 
+            filtered.map(clothes => (
+                <div className="clothes__inner">
+                  {/* <p>{clothes.style}</p>
+                  <p>{clothes.color}</p> */}
+                  <motion.div className="clothes__imgWrap"
+                    layout
+                  >
+                    <Link to={`/show/${clothes.key}`} className="clothes__img">
+                      <motion.img src={clothes.url} className="clothes__img" alt="photo"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{delay: 1}}
+                      />
+                    </Link>
+                  </motion.div>
+                </div>
+            ))
+          }
+        </div>
 
         <Upload 
           show={this.state.show}

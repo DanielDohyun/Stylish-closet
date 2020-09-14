@@ -5,6 +5,7 @@ import { timestamp } from '../../firebase';
 import firebase from '../../firebase';
 import Modal from 'react-bootstrap4-modal';
 import close from '../../assets/icons/close.svg';
+import { motion } from 'framer-motion';
 
 import './Upload.scss';
 
@@ -115,8 +116,16 @@ class Upload extends Component {
     return (
       <>
 
-				<div className="upload-overlay" onClick={hideModal} ></div>
-        <form className="upload">
+				<motion.div className="upload-overlay" onClick={hideModal} 
+          initial = {{opacity:0}}
+          animate = {{opacity:1}}
+        >
+        
+        </motion.div>
+        <motion.form className="upload"
+          initial = {{x: '-100vw'}}
+          animate = {{x: 0}}
+        >
           <img alt="close" className="upload__close" src={close} onClick={hideModal} /> 
 
           <div className="upload__inner">
@@ -165,7 +174,7 @@ class Upload extends Component {
             <button className="upload__submit" onClick={this.onSubmit} >Submit</button>
           </div>
 
-        </form>
+        </motion.form>
       </>
     )
   }
