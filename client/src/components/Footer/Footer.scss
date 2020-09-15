@@ -93,6 +93,7 @@
     // mailto styling
     &__email>a {
       text-decoration: none;
+      color: $primary-color;
     }
 
     .third {
@@ -110,6 +111,8 @@
       }
     }
   }
+
+
  
   // font size, line height and margin for copyright section
   .copyright {

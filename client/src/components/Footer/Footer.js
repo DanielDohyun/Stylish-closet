@@ -30,7 +30,7 @@ class Footer extends Component {
                   Stylish Closet Management</p>
                 <p className="contact__location">1000 Style Street West
                   Toronto, Ontario M5V 1L7</p>
-                <p className="contact__email"><a className="contact__mailto" href="mailto:info@stylishcloset.com">info@stylishcloset.com</a></p>
+                <p className="contact__email"><a className="contact__mailto" href="mailto:kkdh1109@hotmail.com">kkdh1109@hotmail.com</a></p>
               </div>
             </div>
           </div>

@@ -82,14 +82,14 @@
     box-sizing: border-box;
 
     @include tablet {
-      height: 45vw;
-      width: 45vw;
+      height: 40vw;
+      width: 40vw;
 
     }
 
     @include desktop {
-      height: 35vw;
-      width: 30vw;
+      height: 25vw;
+      width: 25vw;
 
     }
   }

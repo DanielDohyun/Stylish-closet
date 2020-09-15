@@ -21,12 +21,13 @@
 
     @include tablet {
       display: initial;
-      background-color: #0070c9;
+      // background-color: #0070c9;
       color: white;
       border-radius: 4px;
       border: none;
       padding: 0.7rem 0.2rem;
-      background: linear-gradient(#42a1ec,#0070c9);
+      // background: linear-gradient(#42a1ec,#0070c9);
+      background-image: linear-gradient(to right, #E0EAFC 0%, #CFDEF3 51%, #E0EAFC 100%);
       font-size: 1.5rem;
       width: 30vw;
       height: 6vw;
@@ -43,7 +44,16 @@
   }
 
   &__add:hover {
-    opacity: 0.85;
+    // opacity: 0.85;
+    background-position: right center; 
+
+  }
+
+  &__add:active, &__add:focus {
+    // opacity: 0.85;
+    // background-position: right center; 
+    border: none;
+
   }
 
   &__add-mobile {
@@ -82,14 +92,14 @@
     box-sizing: border-box;
 
     @include tablet {
-      height: 45vw;
-      width: 45vw;
+      height: 40vw;
+      width: 40vw;
 
     }
 
     @include desktop {
-      height: 35vw;
-      width: 30vw;
+      height: 28vw;
+      width: 25vw;
 
     }
   }
