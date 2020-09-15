@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import add from '../../assets/icons/upload.png';
 
 var userCur= firebase.auth().currentUser;
-console.log(userCur)
+// console.log(userCur)
 
 class Coats extends React.Component {
   constructor(props) {
@@ -61,13 +61,14 @@ class Coats extends React.Component {
     const clothes = [];
     querySnapshot.forEach((doc) => {
       console.log('doc data', doc.data())
-      const { style, color, url } = doc.data();
+      const { style, color, url, category } = doc.data();
       clothes.push({
         key: doc.id,
         doc,
         style,
         color,
-        url
+        url,
+        category
       })
     })
     this.setState({
@@ -79,8 +80,8 @@ class Coats extends React.Component {
 
   render() {
 
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Coats&Jackets"); 
-
+    const filtered = this.state.clothes.filter(clothes => clothes.category == "Coats"); 
+  
     return (
     
       <div className="clothes">

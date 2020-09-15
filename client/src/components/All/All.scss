@@ -27,7 +27,8 @@
       border: none;
       padding: 0.7rem 0.2rem;
       // background: linear-gradient(#42a1ec,#0070c9);
-      background-image: linear-gradient(to right, #E0EAFC 0%, #CFDEF3 51%, #E0EAFC 100%);
+      // background-image: linear-gradient(to right, #E0EAFC 0%, #CFDEF3 51%, #E0EAFC 100%);
+      background-color: #29323c;
       font-size: 1.5rem;
       width: 30vw;
       height: 6vw;
@@ -44,8 +45,8 @@
   }
 
   &__add:hover {
-    // opacity: 0.85;
-    background-position: right center; 
+    opacity: 0.9;
+    // background-position: right center; 
 
   }
 
@@ -62,7 +63,8 @@
       color: white;
       border-radius: 50%;
       border: none;
-      background: linear-gradient(#42a1ec,#0070c9);
+      // background: linear-gradient(#42a1ec,#0070c9);
+      background-color: #29323c;
       font-size: 1.5rem;
       font-weight: 600;
       width: 50px;
@@ -74,7 +76,7 @@
   }
 
   &__add-mobile:hover {
-    opacity: 0.85;
+    opacity: 0.9;
   }
 
   &__grid {

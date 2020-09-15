@@ -10,7 +10,7 @@
     // padding-top: 10vh;
     width: 100%;
     // margin-top: 3.4rem;
-    margin-top: 6rem;
+    // margin-top: 6rem;
 }
 @keyframes opacity-background {
     0% {
@@ -34,7 +34,7 @@
 }
 .home-container .welcome-text {
     position: absolute;
-    top: 10%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 50px;
@@ -91,10 +91,8 @@
     transform: translate(-50%, -50%);
     background: url('../../assets/images/closet.jpg') no-repeat center center;
     background-size: cover;
-    height: 90vw;
-    // width: 600px;
-    width: 100%;
-    // display: none;
+    height: 80vw;
+    width: 80%;
     display: flex;
     opacity: 0;
     animation: opacity-image 1s 3s ease-in-out both;

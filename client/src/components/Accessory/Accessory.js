@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import add from '../../assets/icons/upload.png';
 
 var userCur= firebase.auth().currentUser;
-console.log(userCur)
+// console.log(userCur)
 
 class Accessory extends React.Component {
   constructor(props) {

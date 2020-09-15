@@ -8,7 +8,7 @@ import './Closet.scss'
 import { auth } from 'firebase';
 
 var userCur= firebase.auth().currentUser;
-console.log(userCur)
+// console.log(userCur)
 
 class Closet extends React.Component {
   constructor(props) {

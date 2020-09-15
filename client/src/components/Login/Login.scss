@@ -59,6 +59,23 @@
     margin-bottom: 1.3rem;
   }
 
+  &__email, &__password {
+  width: 90%;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  height: 30px;
+  border: 1px solid #d22630;
+  border-radius: 2px;
+
+  @include tablet {
+    height: 35px;
+  }
+   
+   @include desktop {
+    height: 40px;
+  }
+}
+
   &__btn {
     display: flex;
     flex-direction: column;
@@ -94,23 +111,6 @@
 
   &__signupBtn:hover {
     opacity: 0.9;
-  }
-}
-
-input {
-  width: 90%;
-  box-sizing: border-box;
-  padding-left: 1rem;
-  height: 30px;
-  border: 1px solid #d22630;
-  border-radius: 2px;
-
-  @include tablet {
-    height: 35px;
-  }
-   
-   @include desktop {
-    height: 40px;
   }
 }
 

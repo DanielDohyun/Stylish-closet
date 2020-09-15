@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Link, Redirect, useHistory } from "react-router-dom";
 import Firebase from 'firebase';
 import firebase from '../../firebase';
-import backArrow from '../../assets/icons/back_arrow.svg';
+import backArrow from '../../assets/icons/black-arrow.svg';
 import './EditClothing.scss';
+import { timestamp } from '../../firebase';
 
 let color = [
   "White", "Brown", "Black", "Blue", "Navy", "Red", "Yellow", "Pink", "Gray"
@@ -14,6 +15,8 @@ let style = [
 ]
 
 class EditClothing extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state= {
@@ -22,11 +25,34 @@ class EditClothing extends Component {
       color: '',
       style: '',
       url: '',
-      image: null
+      image: null,
+      newImg: false,
+      user: null,
+      category: ''
+
     }
   }
 
+    //need this to update the user and get uid
+  componentDidMount() {
+    this.authListener();
+  }
+
+  authListener() {
+    firebase.auth().onAuthStateChanged((user) =>{
+      console.log(user.uid)
+      if(user) {
+        this.setState({user})
+      } else {
+        this.setState({user: null})
+      }
+    })
+  }
+
+
   componentDidMount () {
+
+    this._isMounted = true;
   
     const ref = firebase.firestore().collection('closet').doc(this.props.match.params.id);
     // console.log(ref);
@@ -39,8 +65,9 @@ class EditClothing extends Component {
           name: document.name,
           color: document.color,
           style: document.style,
-          url: document.url
-  
+          url: document.url,
+          user: document.author,
+          category: document.category
         });
       } else {
         console.log('no such document is present')
@@ -66,6 +93,9 @@ class EditClothing extends Component {
 
   handleUpload = (e) => {
     e.preventDefault();
+    this.setState ({
+      newImg: !this.state.newImg
+    });
     const {image, url} = this.state;
     var desertRef = firebase.storage().refFromURL(url);
     const uploadTask = firebase.storage().ref(`closet/${image.name}`).put(this.state.image)
@@ -87,15 +117,24 @@ class EditClothing extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    
-      //chain this so that this runs after url value is passed
-      const {name, style, color, url} = this.state;
+    if(!this.state.newImg) {
+      alert("Please upload a new image first")
+    } else {
+       //chain this so that this runs after url value is passed
+      const { name, style, color, url, user, category } = this.state;
       const updateRef = firebase.firestore().collection('closet').doc(this.state.key);
+      const createdAt = timestamp();
+      console.log(user)
+
       updateRef.set({
+        author: user,
         name,
         style,
         color,
-        url
+        url:this.state.url,
+        category,
+        createdAt
+
       }).then((docRef) => {
         this.setState({
           key: '',
@@ -109,6 +148,15 @@ class EditClothing extends Component {
       .catch(error => {console.error("error editing the document", error);
       })
    
+    }
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -117,38 +165,44 @@ class EditClothing extends Component {
     return (
 
       <div className="edit">
-            <Link to='/'>
-              <img src={backArrow}/>
-            </Link>
+            <img className="edit__back" src={backArrow} onClick={this.goBack} />
+
           <form className="edit__form">
-          
-            <label htmlFor="color" className="edit__colorLabel">Color</label> 
-            <select className="edit__select" multiple name="color" onChange={this.onChange}>
-              <option value={this.state.color}>{this.state.color}</option>
-              {
-                color.map(color => {
-                  if(color !== this.state.color)
-                  return (<option value={color}>{color}</option>)
-                })
-              }
-            </select>
 
-            <label htmlFor="style" className="edit__styleLabel">style</label>
-            <select className="edit__select" multiple name="style" onChange={this.onChange}>
-              <option value={this.state.style}>{this.state.style}</option>
-              {
-                style.map(style => {
-                  if(style !== this.state.style)
-                  return (<option value={style}>{style}</option>)
-                })
-              }
-            </select>  
+            <div className="edit__color">
+              <label htmlFor="color" className="edit__colorLabel">Color</label> 
+              <select className="edit__select" single name="color" onChange={this.onChange}>
+                <option value={this.state.color}>{this.state.color}</option>
+                {
+                  color.map(color => {
+                    if(color !== this.state.color)
+                    return (<option value={color}>{color}</option>)
+                  })
+                }
+              </select>
+            </div>
 
-            <input className="edit__imgInput" type="file" onChange={this.handleChange} />
-            <button className="edit__first" onClick={this.handleUpload}>Update Photo</button>
+            <div className="edit__style">
+              <label htmlFor="style" className="edit__styleLabel">style</label>
+              <select className="edit__select" single name="style" onChange={this.onChange}>
+                <option value={this.state.style}>{this.state.style}</option>
+                {
+                  style.map(style => {
+                    if(style !== this.state.style)
+                    return (<option value={style}>{style}</option>)
+                  })
+                }
+              </select>
+            </div>  
+
+            <div className="edit__imgFirst">  
+              <input className="edit__imgInput" type="file" onChange={this.handleChange} />
+              <button className="edit__first" onClick={this.handleUpload}>Update Photo</button>
+            </div>
+
             <img src={this.state.url} className="edit__img" />
 
-            <div className="upload__btn">
+            <div className="edit__btn">
               <Link to={`/show/${id}`}>
                 <button className="edit__cancel">Cancel</button>
               </Link>

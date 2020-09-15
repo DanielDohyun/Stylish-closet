@@ -19,7 +19,7 @@ class SideNav extends React.Component {
              <a className="menu-item" href="/shoes">shoes</a>
           </li>
           <li>
-             <a className="menu-item" href="/coats">coats</a>
+             <a className="menu-item" href="/coats">coats & Jackets</a>
           </li>
           <li>
             <a className="menu-item" href="/top">top</a>
