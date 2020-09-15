@@ -76,14 +76,15 @@ class Login extends Component {
 
       <div className="login-container">
         <form className="login">
-
           <div className="login__box">
+            <h1 className="login__login">Log In </h1>
+
             <input 
             className="login__email"
             name="email"
             type="email"
             id="email"
-            placeholder="enter email address"
+            placeholder="EMAIL"
             onChange={this.handleChange}
             value={this.state.email}
             />
@@ -92,19 +93,20 @@ class Login extends Component {
             name="password"
             type="password"
             id="password"
-            placeholder="enter password"
+            placeholder="PASSWORD"
             onChange={this.handleChange}
             value={this.state.password}
             />
 
-            <button onClick={this.login} className="login__loginBtn">Login</button>
+            <button onClick={this.login} className="login__loginBtn btn">Login</button>
           </div>
           
           <div className="login__btn">
-            <Link to="/Signup" >
+            <h1 className="login__new">New Here?</h1>
+            <Link to="/Signup" className="login__signupLink" >
               <button className="login__signupBtn">Signup</button>
             </Link>
-            <button type="button" onClick={this.onSubmit} className="login__google">Login with Google</button>
+            <button type="button" onClick={this.onSubmit} className="login__google btn">Login with Google</button>
           </div>
           
         </form>

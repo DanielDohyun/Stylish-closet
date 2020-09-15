@@ -30,6 +30,7 @@ class Header extends Component {
   GoogleLogout = () => {
     firebase.auth().signOut().then(function() {
     window.location.reload(true);
+    this.props.history.push('/');
 
     }).catch(function(error) {
       // An error happened.
