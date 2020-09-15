@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Link, Redirect, useHistory } from "react-router-dom";
-import Firebase from 'firebase';
+import { Link } from "react-router-dom";
+// import Firebase from 'firebase';
 import firebase from '../../firebase';
 import backArrow from '../../assets/icons/black-arrow.svg';
 import './EditClothing.scss';
@@ -33,11 +33,6 @@ class EditClothing extends Component {
     }
   }
 
-    //need this to update the user and get uid
-  componentDidMount() {
-    this.authListener();
-  }
-
   authListener() {
     firebase.auth().onAuthStateChanged((user) =>{
       console.log(user.uid)
@@ -53,6 +48,8 @@ class EditClothing extends Component {
   componentDidMount () {
 
     this._isMounted = true;
+
+    this.authListener();
   
     const ref = firebase.firestore().collection('closet').doc(this.props.match.params.id);
     // console.log(ref);
@@ -64,10 +61,10 @@ class EditClothing extends Component {
           key: doc.id,
           name: document.name,
           color: document.color,
-          style: document.style,
           url: document.url,
           user: document.author,
-          category: document.category
+          category: document.category,
+          style: document.style
         });
       } else {
         console.log('no such document is present')
@@ -131,7 +128,7 @@ class EditClothing extends Component {
         name,
         style,
         color,
-        url:this.state.url,
+        url,
         category,
         createdAt
 
@@ -165,7 +162,7 @@ class EditClothing extends Component {
     return (
 
       <div className="edit">
-            <img className="edit__back" src={backArrow} onClick={this.goBack} />
+            <img className="edit__back" src={backArrow} onClick={this.goBack} alt="back" />
 
           <form className="edit__form">
 
@@ -200,7 +197,7 @@ class EditClothing extends Component {
               <button className="edit__first" onClick={this.handleUpload}>Update Photo</button>
             </div>
 
-            <img src={this.state.url} className="edit__img" />
+            <img src={this.state.url} className="edit__img" alt="img" />
 
             <div className="edit__btn">
               <Link to={`/show/${id}`}>

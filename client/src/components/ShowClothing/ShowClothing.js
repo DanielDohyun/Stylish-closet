@@ -1,9 +1,7 @@
-import React, { Component, createContext } from 'react'
-import { Link, Redirect } from "react-router-dom";
-// import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
-import Firebase from 'firebase';
+import React, { Component } from 'react'
+import { Link } from "react-router-dom";
+// import Firebase from 'firebase';
 import firebase from '../../firebase';
-// import backArrow from '../../assets/icons/back_arrow.svg';
 import backArrow from '../../assets/icons/black-arrow.svg';
 import './ShowClothing.scss';
 
@@ -53,8 +51,8 @@ class ShowClothing extends Component {
   }
 
   render() {
-    const {ShowClothing, hideClothing} = this.props;
-    console.log(this.props);
+    // const {ShowClothing, hideClothing} = this.props;
+    // console.log(this.props);
 
     if (!this.state.clothing) {
 			return null;
@@ -63,10 +61,10 @@ class ShowClothing extends Component {
     return (
 
       <div className="current">
-        <img className="current__back" src={backArrow} onClick={this.goBack}/>
+        <img className="current__back" src={backArrow} onClick={this.goBack} alt="back"/>
           
           <div className="current__img">
-            <img src={this.state.clothing.url} className="upload-img" />
+            <img src={this.state.clothing.url} className="upload-img" alt="curImg" />
           </div>
 
           <div className="current__info">

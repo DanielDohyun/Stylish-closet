@@ -16,10 +16,10 @@ class Footer extends Component {
             <div className="sns">
               <h1 className="sns__heading">Get In Touch</h1>
               <div className="sns__container">
-                <img className="sns__icon" src={instagram} />
+                <img className="sns__icon" src={instagram} alt="insta" />
                 
-                <img className="sns__icon" src={facebook} />
-                <img className="sns__icon" src={twitter} />
+                <img className="sns__icon" src={facebook} alt="face" />
+                <img className="sns__icon" src={twitter} alt="twit" />
               </div>
             </div>
 

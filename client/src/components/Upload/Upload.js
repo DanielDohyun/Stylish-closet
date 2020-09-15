@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
-import Firebase from 'firebase';
+// import Firebase from 'firebase';
 import { timestamp } from '../../firebase';
 import firebase from '../../firebase';
-import Modal from 'react-bootstrap4-modal';
+// import Modal from 'react-bootstrap4-modal';
 import close from '../../assets/icons/close.svg';
 import { motion } from 'framer-motion';
 
@@ -74,7 +74,7 @@ class Upload extends Component {
 
       //chain this so that this runs after url value is passed
       const {name, style, color, user, category} = this.state;
-      var userCur= firebase.auth().currentUser;
+      // var userCur= firebase.auth().currentUser;
       const createdAt = timestamp();
 
       this.ref.add({
@@ -107,7 +107,7 @@ class Upload extends Component {
   }
 
   render() {
-    const {name, style, color,} = this.state;
+    // const {name, style, color,} = this.state;
     const {show, hideModal} = this.props;
     if (!show) {
 			return null;
@@ -165,7 +165,7 @@ class Upload extends Component {
               </select>  
 
               <input className="upload__imgInput" type="file" onChange={this.handleChange} />
-              <img src={this.state.url} className="upload__img" />
+              <img src={this.state.url} className="upload__img" alt="upload" />
 
           </div>  
 
