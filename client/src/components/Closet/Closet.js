@@ -1,14 +1,7 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import firebase from '../../firebase';
-// import Upload from '../Upload/Upload';
-// import ShowClothing from '../ShowClothing/ShowClothing';
 import { Link } from "react-router-dom";
 import './Closet.scss'
-// import { auth } from 'firebase';
-
-// var userCur= firebase.auth().currentUser;
-// console.log(userCur)
 
 class Closet extends React.Component {
   constructor(props) {
@@ -42,12 +35,11 @@ class Closet extends React.Component {
   }
 
   render() {
-    // console.log(this.state.clothes);
-    // const filtered = this.state.clothes.filter(clothes => clothes.style == "Formal"); 
-    // console.log(this.props)
+
     if(!this.state.user) {
       return null;
     }
+    
     return (
     
       <div className="home-container">

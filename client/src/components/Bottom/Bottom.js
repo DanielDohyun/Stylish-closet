@@ -1,14 +1,10 @@
 import React  from 'react';
-// import ReactDOM from 'react-dom';
 import firebase from '../../firebase';
 import Upload from '../Upload/Upload';
 import { Link } from "react-router-dom";
 import '../Shoes/Shoes.scss';
 import { motion } from 'framer-motion';
 import add from '../../assets/icons/upload.png';
-
-// var userCur= firebase.auth().currentUser;
-// console.log(userCur)
 
 class Bottom extends React.Component {
   constructor(props) {
@@ -74,7 +70,6 @@ class Bottom extends React.Component {
     this.setState({
       clothes
     });
-    // {console.log(clothes);}
 
   }
 

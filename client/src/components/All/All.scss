@@ -21,7 +21,6 @@
 
     @include tablet {
       display: initial;
-      // background-color: #0070c9;
       color: white;
       border-radius: 2px;
       border: none;
@@ -47,15 +46,6 @@
 
   &__add:hover {
     opacity: 0.9;
-    // background-position: right center; 
-
-  }
-
-  &__add:active, &__add:focus {
-    // opacity: 0.85;
-    // background-position: right center; 
-    border: none;
-
   }
 
   &__add-mobile {

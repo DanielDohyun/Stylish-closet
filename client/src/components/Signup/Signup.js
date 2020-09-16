@@ -43,7 +43,6 @@ class Signup extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // console.log('User is singed in')
         // console.log(user.displayName +'\n' + user.email)
         this.setState({
           email:user.email

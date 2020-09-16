@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-// import Firebase from 'firebase';
 import firebase from '../../firebase';
 import backArrow from '../../assets/icons/black-arrow.svg';
 import './EditClothing.scss';
