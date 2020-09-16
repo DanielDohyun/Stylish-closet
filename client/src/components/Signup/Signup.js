@@ -64,25 +64,27 @@ class Signup extends Component {
 
       <div>
           <form className="sign">
-            <input 
-            className="sign__First"
-            name="first"
-            type="text"
-            id="first"
-            placeholder="First Name"
-            onChange={this.handleChange}
-            value={this.first}
-            />
+            <div className="sign__name">
+              <input 
+              className="sign__first"
+              name="first"
+              type="text"
+              id="first"
+              placeholder="First Name"
+              onChange={this.handleChange}
+              value={this.first}
+              />
 
-            <input 
-            className="sign__last"
-            name="last"
-            type="text"
-            id="last"
-            placeholder="Last Name"
-            onChange={this.handleChange}
-            value={this.last}
-            />
+              <input 
+              className="sign__last"
+              name="last"
+              type="text"
+              id="last"
+              placeholder="Last Name"
+              onChange={this.handleChange}
+              value={this.last}
+              />
+            </div>
 
             <input 
             className="sign__birth"
@@ -94,24 +96,26 @@ class Signup extends Component {
             value={this.birth}
             />
             
-            <input 
-            className="sign__email"
-            name="email"
-            type="email"
-            id="email"
-            placeholder="enter email address"
-            onChange={this.handleChange}
-            value={this.state.email}
-            />
-            <input 
-            className="sign__password"
-            name="password"
-            type="password"
-            id="password"
-            placeholder="enter password"
-            onChange={this.handleChange}
-            value={this.state.password}
-            />
+            <div className="sign__mail">
+              <input 
+              className="sign__email"
+              name="email"
+              type="email"
+              id="email"
+              placeholder="enter email address"
+              onChange={this.handleChange}
+              value={this.state.email}
+              />
+              <input 
+              className="sign__password"
+              name="password"
+              type="password"
+              id="password"
+              placeholder="enter password"
+              onChange={this.handleChange}
+              value={this.state.password}
+              />
+            </div>
 
             <button onClick={this.signup} className="sign__signupBtn">Signup</button>
         </form>

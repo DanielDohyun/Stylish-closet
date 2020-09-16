@@ -2,5 +2,88 @@
 @import "../../styles/partials.scss";
 
 .sign {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
   margin-top: 6rem;
+  width: 50vw;
+  
+  @include desktop {
+     width: 30vw;
+  }
+
+  &__first, &__last, &__birth, &__email, &__password {
+    box-sizing: border-box;
+    border: 1px solid #323232;
+    height: 22px;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    max-width: 256px;
+
+    @include desktop {
+      height: 30px;
+    }
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__first, &__last {
+    width: 100%;
+
+    @include desktop {
+      width: 45%;
+    }
+  }
+
+  &__birth {
+     @include desktop {
+      width: 100%;
+      box-sizing: border-box;
+      max-width: 1000px;
+     }
+  }
+
+  &__mail {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__email, &__password {
+    @include desktop {
+      width: 45%;
+    }
+  }
+
+  &__signupBtn {
+    border: none;
+    border-radius: 2px;
+    background-color: #323232;
+    color: white;
+    max-width: 256px;
+
+    @include desktop {
+      height: 35px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      max-width: 1000px;
+    }
+  }
+
+  &__signupBtn:hover {
+    opacity: 0.9;
+  }
 }
