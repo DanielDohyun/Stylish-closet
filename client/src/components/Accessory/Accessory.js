@@ -81,7 +81,7 @@ class Accessory extends React.Component {
 
   render() {
 
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Accessory"); 
+    const filtered = this.state.clothes.filter(clothes => clothes.category === "Accessory"); 
 
     return (
 

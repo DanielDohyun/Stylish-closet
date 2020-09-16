@@ -165,7 +165,7 @@ class Upload extends Component {
               </select>  
 
               <input className="upload__imgInput" type="file" onChange={this.handleChange} />
-              <img src={this.state.url} className="upload__img" alt="upload" />
+              {/* <img src={this.state.url} className="upload__img" alt="upload" /> */}
 
           </div>  
 

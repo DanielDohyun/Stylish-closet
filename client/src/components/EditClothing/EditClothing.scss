@@ -37,8 +37,21 @@
     }
   }
 
+  &__csBox {
+    @include tablet {
+      display: flex;
+    }
+  }
+
   &__clor, &__style {
     width: 100%;
+  }
+
+  &__color {
+    @include tablet {
+      width: 300px;
+      margin-right: 0.5rem;
+    }
   }
 
   &__colorLabel, &__styleLabel {
@@ -48,6 +61,7 @@
 
     @include tablet {
       font-size: 1.3rem;
+      margin-right: 0.5rem;
     }
 
      @include desktop {
@@ -61,18 +75,21 @@
     margin: 0 0 1.5rem 1rem;
 
     @include tablet {
-      width: 150px;
+      width: 100px;
       height: 30px;
+      margin: 0;
     }
 
     @include desktop {
-      width: 200px;
-      height: 40px;
+      width: 120px;
+      height: 35px;
     }
   }
 
   &__imgFirst {
-    margin: 2rem 0;
+    @include tablet {
+      margin: 1.5rem 0;
+    }
   }
 
   &__imgInput {
@@ -81,6 +98,11 @@
 
     @include tablet {
       margin: 0;
+      margin-right: 2.5rem;
+    }
+
+    @include desktop {
+      margin-right: 3rem;
     }
   }
 
@@ -91,15 +113,52 @@
     max-height: 314px;
   }
 
+  &__cancel, &__update {
+    background-color: white;
+    border: 1px solid #323232;
+    padding: 0.1rem 0.4rem;
+
+    @include tablet {
+      padding: 0.4rem 1.5rem;
+      font-weight:600;
+    }
+
+    @include desktop {
+      padding: 0.6rem 1.8rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  // &__first:hover, 
+  &__cancel:hover, &__update:hover {
+    background-color: #FBF9F8;
+  }
+
   &__btn {
     display: flex;
-    // justify-content: center;
     padding-left: 10vw;
-    margin-top: 2rem;
+    margin-top: 1rem;
+
+    @include tablet {
+      padding-left: 5vw;
+    }
+
+    @include desktop {
+      padding-left: 0;
+    }
   }
 
   &__cancel {
     margin-right: 1rem;
+
+    @include tablet {
+      margin-right: 2rem;
+    }
+
+    @include desktop {
+      margin-right: 3rem;
+    }
+
   }
 
 }

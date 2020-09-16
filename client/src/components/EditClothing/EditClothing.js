@@ -166,30 +166,32 @@ class EditClothing extends Component {
 
           <form className="edit__form">
 
-            <div className="edit__color">
-              <label htmlFor="color" className="edit__colorLabel">Color</label> 
-              <select className="edit__select" single name="color" onChange={this.onChange}>
-                <option value={this.state.color}>{this.state.color}</option>
-                {
-                  color.map(color => {
-                    if(color !== this.state.color)
-                    return (<option value={color}>{color}</option>)
-                  })
-                }
-              </select>
-            </div>
+            <div className="edit__csBox">
+              <div className="edit__color">
+                <label htmlFor="color" className="edit__colorLabel">Color</label> 
+                <select className="edit__select" single name="color" onChange={this.onChange}>
+                  <option value={this.state.color}>{this.state.color}</option>
+                  {
+                    color.map(color => {
+                      if(color !== this.state.color)
+                      return (<option value={color}>{color}</option>)
+                    })
+                  }
+                </select>
+              </div>
 
-            <div className="edit__style">
-              <label htmlFor="style" className="edit__styleLabel">style</label>
-              <select className="edit__select" single name="style" onChange={this.onChange}>
-                <option value={this.state.style}>{this.state.style}</option>
-                {
-                  style.map(style => {
-                    if(style !== this.state.style)
-                    return (<option value={style}>{style}</option>)
-                  })
-                }
-              </select>
+              <div className="edit__style">
+                <label htmlFor="style" className="edit__styleLabel">style</label>
+                <select className="edit__select" single name="style" onChange={this.onChange}>
+                  <option value={this.state.style}>{this.state.style}</option>
+                  {
+                    style.map(style => {
+                      if(style !== this.state.style)
+                      return (<option value={style}>{style}</option>)
+                    })
+                  }
+                </select>
+              </div>
             </div>  
 
             <div className="edit__imgFirst">  

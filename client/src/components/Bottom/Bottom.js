@@ -80,7 +80,7 @@ class Bottom extends React.Component {
 
   render() {
 
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Bottom"); 
+    const filtered = this.state.clothes.filter(clothes => clothes.category === "Bottom"); 
 
     return (
     

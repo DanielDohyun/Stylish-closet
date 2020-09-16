@@ -27,14 +27,14 @@ class Footer extends Component {
               <div className="contact__container">
                 <h1 className="contact__heading">Support</h1>
                 <p className="contact__name">
-                  Stylish Closet Management</p>
+                  Daniel Kim </p>
                 <p className="contact__location">1000 Style Street West
                   Toronto, Ontario M5V 1L7</p>
                 <p className="contact__email"><a className="contact__mailto" href="mailto:kkdh1109@hotmail.com">kkdh1109@hotmail.com</a></p>
               </div>
             </div>
           </div>
-            <p className="copyright">Copyright The Stylish Closet © 2020
+            <p className="copyright">Copyright The Closet Organizer © 2020
               All Rights Reserved</p>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import firebase from '../../firebase';
 import './Header.scss';
 import Toggle from '../SideNav/Toggle';

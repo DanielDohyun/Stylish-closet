@@ -80,7 +80,7 @@ class Coats extends React.Component {
 
   render() {
 
-    const filtered = this.state.clothes.filter(clothes => clothes.category == "Coats"); 
+    const filtered = this.state.clothes.filter(clothes => clothes.category === "Coats"); 
   
     return (
     

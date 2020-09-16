@@ -61,8 +61,10 @@ class ShowClothing extends Component {
     return (
 
       <div className="current">
-        <img className="current__back" src={backArrow} onClick={this.goBack} alt="back"/>
-          
+        <div className="current__backBox">
+          <img className="current__back" src={backArrow} onClick={this.goBack} alt="back"/>
+        </div>
+
           <div className="current__img">
             <img src={this.state.clothing.url} className="upload-img" alt="curImg" />
           </div>
