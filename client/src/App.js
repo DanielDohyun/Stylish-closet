@@ -123,6 +123,8 @@ class App extends React.Component {
 
                 {this.state.user ? <Closet /> : <Login />}
 
+                <Route exact path="/login" component={Login} />
+
                 <Route exact path="/" component={Closet} />
 
               </Switch>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import firebase from '../../firebase';
 import './Header.scss';
 import Toggle from '../SideNav/Toggle';
@@ -8,7 +8,8 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
+      user: {},
+      logout: false
     }
   }
 
@@ -28,9 +29,10 @@ class Header extends Component {
   }
 
   GoogleLogout = () => {
-    firebase.auth().signOut().then(function() {
-    window.location.reload(true);
-    this.props.history.push('/');
+    firebase.auth().signOut().then(() => {
+    // window.location.reload(true);
+    let history = useHistory();
+    history.push('/login');
 
     }).catch(function(error) {
       // An error happened.

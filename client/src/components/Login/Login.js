@@ -57,15 +57,14 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // console.log('User is singed in')
-        console.log(user +'\n' + user.email)
-        console.log(this + this.setState)
+        // console.log(user +'\n' + user.email)
+        // console.log(this + this.setState)
         this.setState({
           email:user.email
         })
 
       } else {
-        console.log('No User is signed in')
+        // console.log('No User is signed in')
       }
     });
   }

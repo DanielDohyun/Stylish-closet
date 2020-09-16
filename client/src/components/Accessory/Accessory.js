@@ -37,7 +37,7 @@ class Accessory extends React.Component {
   //need this to update the user and get uid
   authListener() {
     firebase.auth().onAuthStateChanged((user) =>{
-      console.log(user.uid)
+      // console.log(user.uid)
       if(user) {
         this.setState({user: user.uid});
         this.getUserData(user.uid);
@@ -48,7 +48,7 @@ class Accessory extends React.Component {
   }
 
   getUserData= (uid) => {
-    console.log(uid);
+    // console.log(uid);
     firebase.firestore().collection('closet').where("author", "==", uid).orderBy('createdAt', 'desc').onSnapshot(this.onCollectionUpdate);
 }
 
@@ -58,7 +58,7 @@ class Accessory extends React.Component {
   }
 
   onCollectionUpdate = (querySnapshot) => {
-    console.log('querySnapshot', querySnapshot)
+    // console.log('querySnapshot', querySnapshot)
     const clothes = [];
     querySnapshot.forEach((doc) => {
       console.log('doc data', doc.data())
